@@ -87,17 +87,7 @@ const Skills = () => {
                                     {skill.icon}
                                 </div>
                                 <h3>{skill.name}</h3>
-                                <div className="skill-level">
-                                    <div className="level-bar-bg">
-                                        <motion.div
-                                            className="level-bar-fill"
-                                            initial={{ width: 0 }}
-                                            whileInView={{ width: `${skill.level}%` }}
-                                            transition={{ duration: 1, delay: 0.2 }}
-                                        />
-                                    </div>
-                                    <span className="level-text">{skill.level}%</span>
-                                </div>
+
                             </Tilt>
                         </motion.div>
                     ))}
