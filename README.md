@@ -46,7 +46,7 @@ Se quiser baixar o código e ver como funciona na sua máquina:
 
     O site vai abrir em `http://localhost:5173` (normalmente).
 
-## 📬 Contato
+## Contato
 
 Se quiser trocar uma ideia, falar sobre um projeto ou só dar um oi:
 
@@ -54,4 +54,4 @@ Se quiser trocar uma ideia, falar sobre um projeto ou só dar um oi:
 - **GitHub:** [DEVBORGES1](https://github.com/DEVBORGES1)
 
 ---
-*Feito com 💻 e ☕ por João Vitor mais conhecido como DEVBORGES.*
+*Feito por João Vitor mais conhecido como DEVBORGES.*
