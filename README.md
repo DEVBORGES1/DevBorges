@@ -1,5 +1,7 @@
 #  Meu Portfólio
 
+[![CI](https://github.com/DEVBORGES1/DevBorges/actions/workflows/ci.yml/badge.svg)](https://github.com/DEVBORGES1/DevBorges/actions/workflows/ci.yml)
+
 Bem-vindo ao meu espaço na web! Aqui é onde eu mostro um pouco do que eu sei fazer, meus projetos e a minha jornada como desenvolvedor Full Stack. A ideia desse site é ser mais do que apenas um currículo; é uma vitrine viva do meu trabalho.
 
 ## Sobre Mim
@@ -47,6 +49,24 @@ Se quiser baixar o código e ver como funciona na sua máquina:
     ```
 
     O site vai abrir em `http://localhost:5173` (normalmente).
+
+##  Testes e CI
+
+O site tem testes end-to-end com **Playwright**, rodando no build de produção (com pré-renderização) em desktop e mobile:
+
+- HTML pré-renderizado com o conteúdo e as meta tags de SEO;
+- carregamento sem erros de console nem recursos quebrados;
+- acessibilidade WCAG A/AA com **axe-core**;
+- navegação (link ativo, menu mobile com Esc e foco);
+- filtro de habilidades;
+- formulário de contato (sucesso, erro e honeypot), com o EmailJS interceptado para nenhum e-mail real ser enviado.
+
+```bash
+npx playwright install chromium   # primeira vez
+npm run test:e2e
+```
+
+A cada push e pull request, o **GitHub Actions** (`.github/workflows/ci.yml`) roda lint, build e os testes.
 
 ## Contato
 
