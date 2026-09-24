@@ -89,7 +89,7 @@ const Hero = () => {
 
                     <div className="hero-actions hero-enter hero-enter--pop" style={{ '--enter-delay': '0.6s' }}>
                         <a href="#projects" className="cta-button">{t.hero.projectsCta}</a>
-                        <a href={profile.resume} className="cta-button secondary" download>
+                        <a href={profile.resume[locale]} className="cta-button secondary" download>
                             <FaFileDownload aria-hidden="true" /> {t.hero.resumeCta}
                         </a>
                     </div>

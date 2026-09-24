@@ -80,13 +80,13 @@ export const strings = {
             greeting: 'Hi, I’m',
             avatarAlt: 'Illustrated avatar of João Vitor Pereira',
             projectsCta: 'View Projects',
-            resumeCta: 'Download Résumé (PT-BR)',
+            resumeCta: 'Download Résumé',
             scrollDown: 'Go to the About section',
         },
         about: {
             title: 'About Me',
             role: 'Software Engineer',
-            resume: 'Résumé (PT-BR)',
+            resume: 'Résumé',
         },
         experience: {
             title: 'Experience',

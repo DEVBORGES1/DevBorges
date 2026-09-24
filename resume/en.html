@@ -1,0 +1,278 @@
+<!doctype html>
+<!--
+  Fonte do currículo em inglês. Gere o PDF com: npm run resume
+  (saída em public/resume-joao-vitor-pereira.pdf)
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>João Vitor Pereira da Silva — Résumé</title>
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-weight: 100 900;
+      src: url('../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2');
+    }
+
+    @page {
+      size: A4;
+      margin: 14mm 15mm;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 9.6pt;
+      line-height: 1.45;
+      color: #1f2328;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      border-bottom: 2px solid #b91c1c;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 20pt;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .headline {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #b91c1c;
+      margin: 2px 0 6px;
+    }
+
+    .contact {
+      font-size: 8.8pt;
+      color: #444c56;
+    }
+
+    h2 {
+      font-size: 10pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #b91c1c;
+      margin: 12px 0 5px;
+    }
+
+    p+p {
+      margin-top: 4px;
+    }
+
+    ul {
+      padding-left: 14px;
+    }
+
+    li {
+      margin-bottom: 2px;
+    }
+
+    .skills li {
+      list-style: none;
+      margin-left: -14px;
+    }
+
+    .skills strong {
+      font-weight: 700;
+    }
+
+    .entry {
+      margin-bottom: 8px;
+      break-inside: avoid;
+    }
+
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .entry-title {
+      font-weight: 700;
+    }
+
+    .entry-meta {
+      color: #57606a;
+      white-space: nowrap;
+    }
+
+    .entry-sub {
+      color: #57606a;
+      font-size: 8.8pt;
+      margin-bottom: 2px;
+    }
+
+    .stack {
+      font-size: 8.8pt;
+      color: #444c56;
+      margin-top: 2px;
+    }
+
+    /* Página 1: resumo, habilidades e experiência. Página 2: projetos, formação e idiomas. */
+    .page-break {
+      break-before: page;
+    }
+
+    .stack b {
+      font-weight: 600;
+      color: #1f2328;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>João Vitor Pereira da Silva</h1>
+    <p class="headline">Software Engineer | Full Stack &amp; Backend</p>
+    <p class="contact">
+      Videira, SC, Brazil · +55 49 99968-5965 ·
+      <a href="mailto:joaovitorpereira.10112@gmail.com">joaovitorpereira.10112@gmail.com</a><br />
+      Portfolio: <a href="https://devborges.vercel.app/en/">devborges.vercel.app/en</a> ·
+      LinkedIn: <a href="https://www.linkedin.com/in/devborges-joaovitor">linkedin.com/in/devborges-joaovitor</a> ·
+      GitHub: <a href="https://github.com/DEVBORGES1">github.com/DEVBORGES1</a>
+    </p>
+  </header>
+
+  <section>
+    <h2>Summary</h2>
+    <p>
+      Software Engineer focused on the backend, with experience taking applications from zero to production.
+      At Nexus Labz, I architected and shipped a React Native (Expo) mobile app with its backend, JWT and Google
+      OAuth authentication, payments, VPS infrastructure with Nginx and CI/CD on GitHub Actions. I work with
+      TypeScript, JavaScript, Node.js, PHP/Laravel, Python and C#/.NET, and databases such as PostgreSQL, MySQL
+      and SQL Server. Computer Science student at Unoesc, expected to graduate in December 2027.
+    </p>
+  </section>
+
+  <section>
+    <h2>Technical Skills</h2>
+    <ul class="skills">
+      <li><strong>Languages:</strong> TypeScript, JavaScript, PHP, Python, C#, SQL</li>
+      <li><strong>Backend:</strong> Node.js, Laravel, .NET, REST APIs, JWT and OAuth authentication, payment integration</li>
+      <li><strong>Frontend &amp; Mobile:</strong> React, React Native, Expo, HTML, CSS</li>
+      <li><strong>Databases:</strong> PostgreSQL, MySQL, SQL Server, Supabase, MongoDB</li>
+      <li><strong>DevOps &amp; Infrastructure:</strong> Git/GitHub, GitHub Actions (CI/CD), Linux, VPS, Nginx, SSL/TLS (Let’s Encrypt), AWS (basic)</li>
+      <li><strong>Quality:</strong> E2E testing with Playwright and Appium, ESLint, code review</li>
+      <li><strong>Concepts:</strong> layered architecture, MVC, OOP, data modeling, access control (RBAC and Row Level Security)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Professional Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Full Stack Developer (Freelance) — Nathiara Borges, Law Office</span>
+        <span class="entry-meta">Aug 2026 – Sep 2026</span>
+      </div>
+      <p class="entry-sub"><a href="https://nathiaraborgesadv.vercel.app/">nathiaraborgesadv.vercel.app</a></p>
+      <ul>
+        <li>Built a legal platform about the rights of people with disabilities, focused on autism (ASD): landing page, law office website, portfolio, mentoring page and link hub.</li>
+        <li>Focused on accessibility, semantic HTML and clear navigation for its audience.</li>
+      </ul>
+      <p class="stack"><b>Stack:</b> JavaScript, Node.js, HTML, CSS</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Junior Software Engineer — Nexus Labz Ltda.</span>
+        <span class="entry-meta">Nov 2025 – Jun 2026 · Remote</span>
+      </div>
+      <ul>
+        <li>Architected and shipped a React Native (Expo) mobile app to production, with payments, offline caching and Google sign-in (OAuth).</li>
+        <li>Defined the architecture of the mobile and backend layers, with JWT authentication and secure API communication.</li>
+        <li>Led infrastructure decisions and set up the production environment on a VPS: Nginx reverse proxy, SSL/TLS with Let’s Encrypt and server hardening.</li>
+        <li>Automated backend deployments with CI/CD pipelines on GitHub Actions.</li>
+        <li>Mentored a junior developer and led code reviews.</li>
+      </ul>
+      <p class="stack"><b>Stack:</b> TypeScript, JavaScript, React Native, Expo, PostgreSQL, MySQL, SQL Server, Nginx, GitHub Actions</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Mid-level Full Stack Developer (Freelance) — Vitale App, Pilates Studio</span>
+        <span class="entry-meta">Nov 2025 – Dec 2025</span>
+      </div>
+      <ul>
+        <li>Owned the project end to end: a studio management app for Android and iOS.</li>
+        <li>Monorepo with Yarn Workspaces and reusable layers (core, UI and API).</li>
+        <li>Authentication, role-based access control and Row Level Security on PostgreSQL (Supabase).</li>
+        <li>E2E tests for web, API and mobile with Playwright and Appium, plus a quality pipeline (lint, format and CI).</li>
+      </ul>
+      <p class="stack"><b>Stack:</b> React Native, Expo, TypeScript, Supabase, PostgreSQL, Playwright, Appium, GitHub Actions</p>
+    </div>
+  </section>
+
+  <section class="page-break">
+    <h2>Projects</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">RCP — Exam Prep Platform</span>
+        <a class="entry-meta" href="https://github.com/DEVBORGES1/RCP-Sistema-De-Concursos">github.com/DEVBORGES1/RCP-Sistema-De-Concursos</a>
+      </div>
+      <p>SaaS platform for candidates preparing for Brazilian public service exams, with personalized study routines, interactive mock exams and a gamified performance dashboard. Implemented authentication, mock exam management, progress tracking and statistics charts.</p>
+      <p class="stack"><b>Stack:</b> PHP, Laravel, MySQL, JavaScript</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Cinema Management System (Backend)</span>
+        <span class="entry-meta">Academic project · Unoesc</span>
+      </div>
+      <p>Backend and database modeling for a cinema management application: APIs and business rules in C# with .NET, with tables, relationships and SQL queries on MySQL.</p>
+      <p class="stack"><b>Stack:</b> C#, .NET, MySQL</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Expense Control</span>
+        <a class="entry-meta" href="https://github.com/DEVBORGES1/Expense-Control">github.com/DEVBORGES1/Expense-Control</a>
+      </div>
+      <p>Desktop personal finance app in Python for compulsive shoppers: charts dashboard, category budgets, wishlist, goals and gamification.</p>
+      <p class="stack"><b>Stack:</b> Python</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Personal Portfolio</span>
+        <a class="entry-meta" href="https://devborges.vercel.app/en/">devborges.vercel.app</a>
+      </div>
+      <p>React and Vite website with pre-rendered HTML, Portuguese and English versions and a technical case study. It has 39 E2E tests with Playwright and accessibility checks with axe-core, running in CI on GitHub Actions.</p>
+      <p class="stack"><b>Stack:</b> React, Vite, Playwright, GitHub Actions</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">B.Sc. in Computer Science — Unoesc (Universidade do Oeste de Santa Catarina)</span>
+        <span class="entry-meta">Expected Dec 2027</span>
+      </div>
+      <p class="entry-sub">Videira, SC, Brazil</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Languages</h2>
+    <p>Portuguese: native · English: intermediate (B1) · Spanish: intermediate</p>
+  </section>
+</body>
+
+</html>

@@ -28,7 +28,7 @@ test.describe('carregamento e SEO', () => {
     });
 
     test('arquivos públicos existem', async ({ request }) => {
-        for (const path of ['/curriculo-joao-vitor-pereira.pdf', '/og-image.jpg', '/robots.txt', '/sitemap.xml', '/favicon.svg']) {
+        for (const path of ['/curriculo-joao-vitor-pereira.pdf', '/resume-joao-vitor-pereira.pdf', '/og-image.jpg', '/robots.txt', '/sitemap.xml', '/favicon.svg']) {
             const res = await request.get(path);
             expect(res.status(), path).toBe(200);
         }
@@ -242,6 +242,13 @@ test.describe('versão em inglês', () => {
         await page.getByRole('link', { name: 'Ler em português' }).click();
         await expect(page).toHaveURL(/\/cases\/nexus\/$/);
         await expect(page.getByRole('heading', { level: 1 })).toContainText('Do zero à produção');
+    });
+
+    test('botões de currículo apontam para o PDF de cada idioma', async ({ page }) => {
+        await page.goto('/en/');
+        await expect(page.getByRole('link', { name: 'Download Résumé' })).toHaveAttribute('href', '/resume-joao-vitor-pereira.pdf');
+        await page.goto('/');
+        await expect(page.getByRole('link', { name: 'Baixar Currículo' })).toHaveAttribute('href', '/curriculo-joao-vitor-pereira.pdf');
     });
 
     test('filtro e formulário funcionam em inglês', async ({ page }) => {

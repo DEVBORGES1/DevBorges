@@ -2,7 +2,10 @@ export const profile = {
     name: 'João Vitor Pereira',
     brand: 'DEVBORGES',
     role: 'Software Engineer · Full Stack & Backend',
-    resume: '/curriculo-joao-vitor-pereira.pdf',
+    resume: {
+        pt: '/curriculo-joao-vitor-pereira.pdf',
+        en: '/resume-joao-vitor-pereira.pdf',
+    },
     summary: {
         pt: 'Construo APIs, aplicações web e apps mobile do banco de dados à produção — de React Native e TypeScript a PostgreSQL, Nginx e CI/CD.',
         en: 'I build APIs, web applications and mobile apps from the database to production — from React Native and TypeScript to PostgreSQL, Nginx and CI/CD.',

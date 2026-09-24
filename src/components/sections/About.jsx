@@ -38,7 +38,7 @@ const About = () => {
                             <FaLinkedin className="btn-icon" aria-hidden="true" />
                             <span>LinkedIn</span>
                         </a>
-                        <a href={profile.resume} className="premium-btn resume" download>
+                        <a href={profile.resume[locale]} className="premium-btn resume" download>
                             <FaFileDownload className="btn-icon" aria-hidden="true" />
                             <span>{t.about.resume}</span>
                         </a>
