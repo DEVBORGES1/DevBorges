@@ -1,15 +1,14 @@
 import { MotionConfig } from 'framer-motion';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import ScrollReveal from './components/ScrollReveal';
-
-import Experience from './components/Experience';
-import ScrollProgress from './components/ScrollProgress';
+import ScrollProgress from './components/layout/ScrollProgress';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import Hero from './components/sections/Hero';
+import About from './components/sections/About';
+import Experience from './components/sections/Experience';
+import Projects from './components/sections/Projects';
+import Skills from './components/sections/Skills';
+import Contact from './components/sections/Contact';
+import ScrollReveal from './components/ui/ScrollReveal';
 
 function App() {
   return (
@@ -19,9 +18,7 @@ function App() {
         <Header />
         <main>
           <Hero />
-          <ScrollReveal>
-            <About />
-          </ScrollReveal>
+          <About />
           <Experience />
           <Projects />
           <Skills />

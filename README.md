@@ -14,7 +14,7 @@ Esse site não foi feito com templates prontos. Foi construído linha a linha pe
 
 - **Vite + React:** Porque ninguém tem tempo a perder com loadings demorados. É rápido de verdade.
 - **Framer Motion:** Para dar aquela vida na interface. As animações de entrada e transição foram feitas para serem suaves e não intrusivas.
-- **React Tilt:** Aquele efeitinho 3D nos cards dos projetos que todo mundo gosta.
+- **Tilt 3D próprio:** o efeito de inclinação nos cards de projeto é um hook (`useTilt`) de ~40 linhas, sem dependência externa. Só ativa com mouse e respeita a preferência de menos movimento.
 - **CSS Moderno:** Nada de frameworks pesados sem necessidade. O design é responsivo e adaptável.
 
 ##  Projetos em Destaque

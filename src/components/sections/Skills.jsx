@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Tilt } from 'react-tilt';
-import { skills, skillCategories } from '../data/skills';
+import Section from '../layout/Section';
+import { skills, skillCategories } from '../../data/skills';
+import './Skills.css';
 
 const Skills = () => {
     const [activeCategory, setActiveCategory] = useState('Todos');
@@ -10,24 +11,8 @@ const Skills = () => {
         ? skills
         : skills.filter(skill => skill.category === activeCategory);
 
-    const defaultOptions = {
-        reverse: false,
-        max: 25,
-        perspective: 1000,
-        scale: 1.05,
-        speed: 400,
-        transition: true,
-        axis: null,
-        reset: true,
-        easing: "cubic-bezier(.03,.98,.52,.99)",
-        glare: true,
-        "max-glare": 0.4,
-    }
-
     return (
-        <section id="skills" className="skills">
-            <h2>Habilidades & Tecnologias</h2>
-
+        <Section id="skills" className="skills" title="Habilidades & Tecnologias">
             <div className="skills-tabs">
                 {skillCategories.map((category) => (
                     <button
@@ -52,17 +37,17 @@ const Skills = () => {
                             exit={{ opacity: 0, scale: 0.8 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <Tilt options={defaultOptions} className="skill-card">
+                            <div className="skill-card">
                                 <div className="icon-wrapper" aria-hidden="true">
                                     <Icon size={40} color={color} />
                                 </div>
                                 <h3>{name}</h3>
-                            </Tilt>
+                            </div>
                         </motion.div>
                     ))}
                 </AnimatePresence>
             </motion.div>
-        </section>
+        </Section>
     );
 };
 

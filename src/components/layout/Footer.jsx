@@ -1,5 +1,6 @@
 import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
-import { profile, socials } from '../data/profile';
+import { profile, socials } from '../../data/profile';
+import './Footer.css';
 
 const footerLinks = [
     { href: socials.github, label: 'GitHub', icon: FaGithub },

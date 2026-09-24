@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFileDownload } from 'react-icons/fa';
-import { profile, socials } from '../data/profile';
+import Section from '../layout/Section';
+import { profile, socials } from '../../data/profile';
+import './About.css';
 
 const stats = [
     { number: '8 meses', label: 'como Software Engineer na Nexus Labz', delay: 0.2 },
@@ -10,9 +12,7 @@ const stats = [
 
 const About = () => {
     return (
-        <section id="about" className="about">
-            <h2>Sobre Mim</h2>
-
+        <Section id="about" className="about" title="Sobre Mim">
             <div className="about-container">
                 <motion.div
                     className="about-text-column"
@@ -68,7 +68,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </Section>
     );
 };
 

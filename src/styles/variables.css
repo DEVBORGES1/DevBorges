@@ -17,14 +17,3 @@
 
   --transition: all 0.3s ease;
 }
-
-[data-theme="light"] {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f3f4f6;
-  --bg-card: #ffffff;
-
-  --text-primary: #18181b;
-  --text-secondary: #52525b;
-
-  --border-color: #e4e4e7;
-}

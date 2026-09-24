@@ -1,0 +1,12 @@
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--text-accent);
+    transform-origin: 0%;
+    z-index: 9999;
+    box-shadow: 0 0 10px var(--text-accent);
+}

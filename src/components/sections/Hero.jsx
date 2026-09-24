@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FaChevronDown, FaFileDownload } from 'react-icons/fa';
 
-import cartoonImage from '../assets/projects/cartoon.webp';
-import { profile } from '../data/profile';
+import cartoonImage from '../../assets/projects/cartoon.webp';
+import { profile } from '../../data/profile';
+import './Hero.css';
 
 const fullText = profile.role;
 

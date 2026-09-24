@@ -1,0 +1,4 @@
+.tilt {
+    transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+    will-change: transform;
+}

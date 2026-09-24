@@ -1,4 +1,5 @@
 import { motion, useScroll, useSpring } from 'framer-motion';
+import './ScrollProgress.css';
 
 const ScrollProgress = () => {
     const { scrollYProgress } = useScroll();

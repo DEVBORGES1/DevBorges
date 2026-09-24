@@ -6,11 +6,21 @@ Este documento serve como um guia mais aprofundado sobre como o **Portfólio** f
 
 A organização de pastas segue um padrão intuitivo para facilitar a manutenção:
 
-*   **`src/components/`**: Aqui vivem os blocos de construção. Cada parte da página (Hero, About, Projects, etc.) é um componente isolado. Isso ajuda a manter o código limpo e fácil de debugar.
-*   **`src/styles/`**:
-    *   `global.css`: Onde defino as regras gerais, como reset de CSS e variáveis de cores.
-    *   `components.css`: Estilização específica de cada componente. Preferi separar assim para não ter um arquivo CSS gigante e incontrolável.
-*   **`src/assets/`**: Imagens, ícones e outros arquivos estáticos.
+```
+src/
+  components/
+    layout/     Header, Footer, Section (título + <section>), ScrollProgress
+    sections/   Hero, About, Experience, Projects, Skills, Contact
+    ui/         ProjectCard, TechTags, Tilt, ScrollReveal, StaggeredReveal
+  data/         profile, experience, projects, skills (todo o conteúdo do site)
+  hooks/        useTilt
+  styles/       variables.css (tokens), global.css (reset/base), shared.css
+  assets/       imagens (WebP)
+```
+
+*   Cada componente importa o próprio CSS (`Hero.jsx` → `Hero.css`), então o estilo fica ao lado de quem usa.
+*   `styles/shared.css` guarda o que é usado por várias seções: título de seção e tags de tecnologia.
+*   Componentes não guardam texto: o conteúdo vem de `src/data/`.
 
 ## Estilização e Design
 
@@ -25,7 +35,7 @@ Para as animações, não usei CSS puro para tudo porque queria um controle maio
 
 *   **Framer Motion:** É a biblioteca que cuida das entradas suaves.
     *   *Exemplo:* O componente `StaggeredReveal` faz os itens aparecerem um de cada vez em cascata, ao invés de aparecerem todos de uma vez de forma bruta.
-*   **Tilt Effect:** Nos cards de projetos, usei `react-tilt` para dar aquela sensação de profundidade quando você passa o mouse. É um detalhe sutil, mas que adiciona valor à experiência.
+*   **Tilt Effect:** Nos cards de projetos, o hook `src/hooks/useTilt.js` inclina o card seguindo o cursor. Ele só ativa com mouse (sem efeito em touch) e é desligado quando o sistema pede menos movimento.
 
 ##  Deploy
 

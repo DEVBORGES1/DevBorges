@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
-import { experience } from '../data/experience';
+import Section from '../layout/Section';
+import TechTags from '../ui/TechTags';
+import { experience } from '../../data/experience';
+import './Experience.css';
 
 const Experience = () => {
     return (
-        <section id="experience" className="experience">
-            <h2>Experiência</h2>
+        <Section id="experience" className="experience" title="Experiência">
             <div className="timeline-container">
                 <div className="timeline-line"></div>
                 {experience.map((item, index) => {
@@ -34,19 +36,13 @@ const Experience = () => {
                                         <li key={text}>{text}</li>
                                     ))}
                                 </ul>
-                                {item.tech.length > 0 && (
-                                    <div className="project-tags">
-                                        {item.tech.map((t) => (
-                                            <span key={t} className="tech-tag">{t}</span>
-                                        ))}
-                                    </div>
-                                )}
+                                <TechTags items={item.tech} />
                             </div>
                         </motion.article>
                     );
                 })}
             </div>
-        </section>
+        </Section>
     );
 };
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import './Header.css';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
