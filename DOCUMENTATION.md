@@ -79,6 +79,16 @@ Outras escolhas de performance:
 *   **Imagens WebP** no tamanho de exibição, com `srcset` no avatar e `loading="lazy"` nos projetos.
 *   Animações infinitas do hero pausadas quando ele sai da tela.
 
+##  Segurança
+
+`vercel.json` define os headers de todas as páginas:
+
+*   **Content-Security-Policy**: scripts, fontes e imagens só do próprio domínio; estilos inline permitidos (HTML pré-renderizado e animações usam `style`); conexões externas só para `https://api.emailjs.com`. Ao adicionar um serviço externo (analytics, fontes, APIs), inclua o domínio na diretiva correspondente.
+*   `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy` e `Strict-Transport-Security`.
+*   Cache de 1 ano (`immutable`) para `/assets/`, que têm hash no nome.
+
+Os testes E2E aplicam esses headers às páginas e falham se a CSP bloquear qualquer recurso ou o envio do formulário.
+
 ##  Deploy
 
 O deploy é feito na **Vercel**, integrada ao repositório do GitHub.

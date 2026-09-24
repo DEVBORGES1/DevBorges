@@ -21,7 +21,9 @@
     min-height: 44px;
     font-size: 1.8rem;
     color: var(--text-secondary);
-    transition: var(--transition);
+    transition-property: var(--transition-props);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
     display: flex;
     align-items: center;
     justify-content: center;

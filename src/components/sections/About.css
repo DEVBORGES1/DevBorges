@@ -58,7 +58,9 @@
     font-weight: 600;
     font-size: 1rem;
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: var(--transition-props);
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .premium-btn.github {
@@ -120,7 +122,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    transition: all 0.3s ease;
+    transition-property: var(--transition-props);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
 }
 
 .stat-card:hover {

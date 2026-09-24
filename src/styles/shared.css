@@ -45,7 +45,9 @@
     border-radius: 50px;
     font-size: 1rem;
     box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
-    transition: var(--transition);
+    transition-property: var(--transition-props);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
 }
 
 .cta-button:hover {

@@ -60,6 +60,8 @@ O site tem testes end-to-end com **Playwright**, rodando no build de produção 
 - navegação (link ativo, menu mobile com Esc e foco);
 - filtro de habilidades;
 - formulário de contato (sucesso, erro e honeypot), com o EmailJS interceptado para nenhum e-mail real ser enviado.
+- versão em inglês e case study;
+- headers de segurança do `vercel.json` (CSP) sem bloquear nada do site.
 
 ```bash
 npx playwright install chromium   # primeira vez

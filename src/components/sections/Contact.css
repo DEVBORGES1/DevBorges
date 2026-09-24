@@ -48,7 +48,9 @@
     color: var(--text-primary);
     font-weight: 500;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition-property: var(--transition-props);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
 }
 
 .social-btn span {
@@ -92,7 +94,9 @@
     color: var(--text-primary);
     font-family: inherit;
     font-size: 1rem;
-    transition: all 0.3s ease;
+    transition-property: var(--transition-props);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
 }
 
 .form-group input::placeholder,
@@ -121,7 +125,9 @@
     font-size: 1.1rem;
     box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
     border: none;
-    transition: all 0.3s ease;
+    transition-property: var(--transition-props);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
 }
 
 .submit-btn:hover:not(:disabled) {

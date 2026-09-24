@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
@@ -273,4 +274,55 @@ test.describe('versão em inglês', () => {
         await page.getByRole('button', { name: 'Send Message' }).click();
         await expect(page.getByRole('status')).toContainText('Message sent');
     });
+});
+
+test.describe('headers de segurança (vercel.json)', () => {
+    // O preview do Vite não aplica o vercel.json: os headers são injetados nas respostas
+    // HTML para verificar que a CSP não bloqueia nada que o site usa.
+    const vercel = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url), 'utf-8'));
+    const globalHeaders = Object.fromEntries(
+        vercel.headers.find((rule) => rule.source === '/(.*)').headers.map(({ key, value }) => [key.toLowerCase(), value]),
+    );
+    // upgrade-insecure-requests converteria http://localhost em https:// e quebraria o teste local
+    globalHeaders['content-security-policy'] = globalHeaders['content-security-policy'].replace(/;\s*upgrade-insecure-requests/, '');
+
+    test('CSP e demais headers estão definidos', () => {
+        for (const header of ['content-security-policy', 'x-content-type-options', 'referrer-policy', 'permissions-policy', 'x-frame-options']) {
+            expect(globalHeaders[header], header).toBeTruthy();
+        }
+    });
+
+    for (const path of ['/', '/en/', '/cases/nexus/', '/en/cases/nexus/']) {
+        test(`${path} funciona sob a CSP, sem violações`, async ({ page }) => {
+            const violations = [];
+            page.on('console', (msg) => /Content Security Policy|Refused to/.test(msg.text()) && violations.push(msg.text()));
+            await page.route('**/*', async (route) => {
+                if (route.request().resourceType() !== 'document') return route.fallback();
+                const response = await route.fetch();
+                await route.fulfill({ response, headers: { ...response.headers(), ...globalHeaders } });
+            });
+            await page.route('https://api.emailjs.com/**', (route) => route.fulfill({ status: 200, body: 'OK' }));
+
+            await page.goto(path);
+            await page.waitForLoadState('networkidle');
+            // Rola a página inteira para carregar imagens lazy e o módulo de animações
+            await page.evaluate(async () => {
+                for (let y = 0; y < document.body.scrollHeight; y += 500) {
+                    window.scrollTo(0, y);
+                    await new Promise((r) => setTimeout(r, 40));
+                }
+            });
+
+            if (path === '/') {
+                await page.getByLabel('Seu nome').fill('Teste CSP');
+                await page.getByLabel('Seu e-mail').fill('csp@example.com');
+                await page.getByLabel('Sua mensagem').fill('Mensagem de teste');
+                await page.getByRole('button', { name: 'Enviar Mensagem' }).click();
+                await expect(page.getByRole('status')).toContainText('Mensagem enviada com sucesso');
+            }
+
+            await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+            expect(violations).toEqual([]);
+        });
+    }
 });

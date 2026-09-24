@@ -17,5 +17,6 @@
   --font-family: 'Inter Variable', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-mono: 'Fira Code Variable', 'Fira Code', 'Courier New', monospace;
 
-  --transition: all 0.3s ease;
+  /* Só propriedades baratas de animar (sem `all`, que inclui propriedades de layout) */
+  --transition-props: color, background-color, border-color, box-shadow, transform, filter, opacity;
 }

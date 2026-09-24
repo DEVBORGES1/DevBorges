@@ -24,7 +24,9 @@
     background: rgba(255, 255, 255, 0.03);
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.4s ease;
+    transition-property: var(--transition-props);
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
     overflow: hidden;
     /* For image */
     display: flex;
@@ -119,7 +121,9 @@
     font-weight: 600;
     font-size: 0.9rem;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition-property: var(--transition-props);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
 }
 
 .project-private {

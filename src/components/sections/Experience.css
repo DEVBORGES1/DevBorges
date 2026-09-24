@@ -42,7 +42,9 @@
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
-    transition: all 0.3s ease;
+    transition-property: var(--transition-props);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
