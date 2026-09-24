@@ -32,3 +32,35 @@
     border-radius: 20px;
     font-weight: 500;
 }
+
+/* Botões de ação (hero, case study) */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--accent-strong);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 50px;
+    font-size: 1rem;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+    transition: var(--transition);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
+}
+
+.cta-button.secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    box-shadow: none;
+}
+
+.cta-button.secondary:hover {
+    border-color: var(--text-accent);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}

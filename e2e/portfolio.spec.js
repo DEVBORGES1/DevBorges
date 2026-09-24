@@ -161,3 +161,39 @@ test.describe('formulário de contato', () => {
         expect(requests).toBe(0);
     });
 });
+
+test.describe('case study Nexus Labz', () => {
+    test('HTML pré-renderizado com conteúdo e SEO próprios', async ({ request }) => {
+        const res = await request.get('/cases/nexus/');
+        expect(res.status()).toBe(200);
+        const html = await res.text();
+        expect(html).toContain('<link rel="canonical" href="https://devborges.vercel.app/cases/nexus/" />');
+        expect(html).toMatch(/<h1[^>]*>Do zero à produção/);
+        expect(html).toContain('Decisões técnicas');
+    });
+
+    test('card da Nexus leva ao case e o case volta às seções da home', async ({ page }, testInfo) => {
+        await page.goto('/');
+        await page.getByRole('link', { name: /Ler o case study/ }).click();
+        await expect(page).toHaveURL(/\/cases\/nexus\/$/);
+        await expect(page.getByRole('heading', { level: 1 })).toContainText('Do zero à produção');
+
+        if (!isMobile(testInfo)) {
+            await page.locator('.nav-links a[href="/#projects"]').click();
+            await expect(page).toHaveURL(/\/#projects$/);
+            await expect(page.locator('#projects .section-title')).toBeInViewport();
+        }
+    });
+
+    test('sem erros de console e sem violações WCAG A/AA', async ({ page }) => {
+        const problems = [];
+        page.on('console', (msg) => msg.type() === 'error' && problems.push(msg.text()));
+        page.on('pageerror', (err) => problems.push(err.message));
+        await page.goto('/cases/nexus/');
+        await page.waitForLoadState('networkidle');
+        expect(problems).toEqual([]);
+
+        const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze();
+        expect(results.violations.map((v) => `${v.id}: ${v.nodes.length} elemento(s)`)).toEqual([]);
+    });
+});

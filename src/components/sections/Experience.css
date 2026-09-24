@@ -125,6 +125,25 @@
     text-underline-offset: 3px;
 }
 
+.timeline-case-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-top: 0.25rem;
+    padding: 0 1.1rem;
+    border: 1px solid var(--text-accent);
+    border-radius: 8px;
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.timeline-case-link:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
 .timeline-highlights {
     list-style: disc;
     padding-left: 1.1rem;

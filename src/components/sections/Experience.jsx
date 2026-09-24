@@ -37,6 +37,11 @@ const Experience = () => {
                                     ))}
                                 </ul>
                                 <TechTags items={item.tech} />
+                                {item.caseStudy && (
+                                    <a href={item.caseStudy} className="timeline-case-link">
+                                        Ler o case study &rarr;
+                                    </a>
+                                )}
                             </div>
                         </m.article>
                     );

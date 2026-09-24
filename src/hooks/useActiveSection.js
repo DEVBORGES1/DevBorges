@@ -6,6 +6,7 @@ export function useActiveSection(ids) {
     const [activeId, setActiveId] = useState(ids[0]);
 
     useEffect(() => {
+        if (!ids.length) return undefined;
         const elements = ids.map((id) => document.getElementById(id)).filter(Boolean);
         if (!elements.length) return undefined;
 

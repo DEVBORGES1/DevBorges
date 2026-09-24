@@ -37,6 +37,19 @@ Para as animações, não usei CSS puro para tudo porque queria um controle maio
     *   *Exemplo:* O componente `StaggeredReveal` faz os itens aparecerem um de cada vez em cascata, ao invés de aparecerem todos de uma vez de forma bruta.
 *   **Tilt Effect:** Nos cards de projetos, o hook `src/hooks/useTilt.js` inclina o card seguindo o cursor. Ele só ativa com mouse (sem efeito em touch) e é desligado quando o sistema pede menos movimento.
 
+##  Páginas
+
+O site é multi-página (Vite `build.rollupOptions.input` em `vite.config.js`), sem roteador:
+
+| URL | HTML | Componente |
+|---|---|---|
+| `/` | `index.html` | `src/App.jsx` |
+| `/cases/nexus/` | `cases/nexus/index.html` | `src/pages/NexusCase.jsx` (conteúdo em `src/data/cases/nexus.js`) |
+
+Cada página tem o próprio HTML (título, descrição, canonical e Open Graph) e usa o `AppShell` (header, rodapé e animações). Fora da home, o header recebe `homePath="/"` para que os links apontem para `/#secao`.
+
+Para criar uma página nova: crie o HTML, uma entrada em `src/pages/<nome>/main.jsx` chamando `mount(<Pagina />)`, adicione a entrada no `vite.config.js`, a página em `src/entry-server.jsx` e em `scripts/prerender.mjs`, e a URL em `public/sitemap.xml`.
+
 ##  Build e performance
 
 `npm run build` roda três etapas:

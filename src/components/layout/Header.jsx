@@ -13,10 +13,12 @@ const navItems = [
     { name: 'Contato', id: 'contact' },
 ];
 const sectionIds = navItems.map((item) => item.id);
+const NO_SECTIONS = [];
 
-const Header = () => {
+// `homePath`: vazio na home (links #secao); '/' em outras páginas (links /#secao).
+const Header = ({ homePath = '' }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const activeId = useActiveSection(sectionIds);
+    const activeId = useActiveSection(homePath ? NO_SECTIONS : sectionIds);
     const headerRef = useRef(null);
     const menuButtonRef = useRef(null);
 
@@ -62,7 +64,7 @@ const Header = () => {
             return (
                 <li key={id}>
                     <a
-                        href={`#${id}`}
+                        href={`${homePath}#${id}`}
                         className={isActive ? 'active' : undefined}
                         aria-current={isActive ? 'location' : undefined}
                         onClick={onClick}
@@ -76,7 +78,7 @@ const Header = () => {
     return (
         <header className="header" ref={headerRef}>
             <nav className="nav-container" aria-label="Navegação principal">
-                <a href="#hero" className="logo" aria-label="DEVBORGES — voltar ao início">
+                <a href={`${homePath}#hero`} className="logo" aria-label="DEVBORGES — voltar ao início">
                     &lt;DEVBORGES/&gt;
                 </a>
 

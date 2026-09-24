@@ -14,6 +14,7 @@ export const experience = [
             'Mentorei um desenvolvedor júnior e conduzi code reviews.',
         ],
         tech: ['TypeScript', 'React Native', 'Expo', 'PostgreSQL', 'MySQL', 'SQL Server', 'Nginx', 'GitHub Actions'],
+        caseStudy: '/cases/nexus/',
     },
     {
         period: 'Freelance',
