@@ -72,7 +72,7 @@ A cada push e pull request, o **GitHub Actions** (`.github/workflows/ci.yml`) ro
 
 Se quiser trocar uma ideia, falar sobre um projeto ou só dar um oi:
 
-- **LinkedIn:** [João Vitor](https://www.linkedin.com/in/joão-vitor-53875a1a1)
+- **LinkedIn:** [João Vitor](https://www.linkedin.com/in/devborges-joaovitor)
 - **GitHub:** [DEVBORGES1](https://github.com/DEVBORGES1)
 
 ---

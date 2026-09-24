@@ -11,7 +11,7 @@ export const profile = {
 
 export const socials = {
     github: 'https://github.com/DEVBORGES1',
-    linkedin: 'https://www.linkedin.com/in/joão-vitor-53875a1a1',
+    linkedin: 'https://www.linkedin.com/in/devborges-joaovitor',
     instagram: 'https://www.instagram.com/itsjvborges/',
     whatsapp: 'https://wa.me/5549999685965',
     email: 'mailto:joaovitorpereira.10112@gmail.com',
