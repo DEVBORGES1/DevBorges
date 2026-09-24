@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFileDownload } from 'react-icons/fa';
 import Section from '../layout/Section';
 import { profile, socials } from '../../data/profile';
@@ -14,7 +14,7 @@ const About = () => {
     return (
         <Section id="about" className="about" title="Sobre Mim">
             <div className="about-container">
-                <motion.div
+                <m.div
                     className="about-text-column"
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -48,12 +48,12 @@ const About = () => {
                             <span>Currículo</span>
                         </a>
                     </div>
-                </motion.div>
+                </m.div>
 
                 <div className="about-stats-column">
                     <div className="stats-grid">
                         {stats.map((stat) => (
-                            <motion.div
+                            <m.div
                                 key={stat.number}
                                 className="stat-card"
                                 initial={{ opacity: 0, y: 30 }}
@@ -63,7 +63,7 @@ const About = () => {
                             >
                                 <span className="stat-number">{stat.number}</span>
                                 <span className="stat-label">{stat.label}</span>
-                            </motion.div>
+                            </m.div>
                         ))}
                     </div>
                 </div>

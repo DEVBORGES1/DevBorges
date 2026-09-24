@@ -185,9 +185,18 @@
 }
 
 .typewriter-text {
-    min-height: 1.8em;
+    position: relative;
     font-family: var(--font-mono);
     letter-spacing: 0.5px;
+}
+
+.typewriter-ghost {
+    visibility: hidden;
+}
+
+.typewriter-typed {
+    position: absolute;
+    inset: 0;
 }
 
 .cursor {
@@ -285,5 +294,65 @@
 
     .scroll-indicator {
         display: none;
+    }
+}
+
+/* Animações infinitas pausadas enquanto o hero está fora da tela */
+.hero.is-offscreen .binary-particles span,
+.hero.is-offscreen .hero-cartoon,
+.hero.is-offscreen .scroll-indicator,
+.hero.is-offscreen .cursor {
+    animation-play-state: paused;
+}
+
+/* Animações de entrada do hero (rodam direto do HTML pré-renderizado) */
+.hero-enter {
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+    animation-delay: var(--enter-delay, 0s);
+}
+
+.hero-enter--title {
+    animation-name: hero-enter-down;
+}
+
+.hero-enter--fade {
+    animation-name: hero-enter-fade;
+}
+
+.hero-enter--pop {
+    animation-name: hero-enter-pop;
+    animation-duration: 0.5s;
+}
+
+.hero-enter--slide {
+    animation-name: hero-enter-slide;
+}
+
+@keyframes hero-enter-down {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes hero-enter-fade {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes hero-enter-pop {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes hero-enter-slide {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
     }
 }

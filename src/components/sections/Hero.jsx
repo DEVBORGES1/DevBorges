@@ -1,26 +1,39 @@
-import { useState, useEffect } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
 import { FaChevronDown, FaFileDownload } from 'react-icons/fa';
 
 import cartoonImage from '../../assets/projects/cartoon.webp';
+import cartoonImageSmall from '../../assets/projects/cartoon-440.webp';
 import { profile } from '../../data/profile';
+import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 import './Hero.css';
 
 const fullText = profile.role;
 
+// Gerador pseudoaleatório com semente fixa (mulberry32): as partículas saem
+// iguais no HTML pré-renderizado e no navegador, evitando divergência na hidratação.
+const createRandom = (seed) => () => {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+};
+const random = createRandom(2024);
+
 // Gerado uma única vez: se ficasse no render, cada tick do typewriter
 // sortearia novas posições/durações e as partículas "pulariam".
 const particles = Array.from({ length: 20 }, () => ({
-    x: (Math.random() * 100 - 50) + '%',
-    delay: Math.random() * 5 + 's',
-    duration: 5 + Math.random() * 5 + 's',
-    left: (50 + (Math.random() * 60 - 30)) + '%',
-    digit: Math.random() > 0.5 ? '1' : '0',
+    x: (random() * 100 - 50).toFixed(2) + '%',
+    delay: (random() * 5).toFixed(2) + 's',
+    duration: (5 + random() * 5).toFixed(2) + 's',
+    left: (50 + (random() * 60 - 30)).toFixed(2) + '%',
+    digit: random() > 0.5 ? '1' : '0',
 }));
 
 const Hero = () => {
     const [text, setText] = useState('');
-    const shouldReduceMotion = useReducedMotion();
+    const sectionRef = useRef(null);
+    const shouldReduceMotion = usePrefersReducedMotion();
 
     useEffect(() => {
         if (shouldReduceMotion) return;
@@ -37,59 +50,50 @@ const Hero = () => {
         return () => clearInterval(intervalId);
     }, [shouldReduceMotion]);
 
+    // Pausa as animações infinitas (partículas, flutuação, seta) quando o hero sai da tela
+    useEffect(() => {
+        const section = sectionRef.current;
+        if (!section) return undefined;
+        const observer = new IntersectionObserver(([entry]) => {
+            section.classList.toggle('is-offscreen', !entry.isIntersecting);
+        });
+        observer.observe(section);
+        return () => observer.disconnect();
+    }, []);
+
+    // Entradas animadas em CSS (Hero.css), não com framer-motion: assim o conteúdo
+    // pré-renderizado aparece sem esperar o JavaScript carregar (melhor LCP).
     return (
-        <section id="hero" className="hero">
+        <section id="hero" className="hero" ref={sectionRef}>
             <div className="hero-container">
                 <div className="hero-text">
-                    <motion.h1
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
+                    <h1 className="hero-enter hero-enter--title">
                         <span className="hero-greeting">Olá, eu sou</span>{' '}
                         João Vitor <span className="highlight">Pereira</span>
-                    </motion.h1>
+                    </h1>
 
-                    <motion.p
-                        className="typewriter-text"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                    >
+                    <p className="typewriter-text hero-enter hero-enter--fade" style={{ '--enter-delay': '0.3s' }}>
                         <span className="sr-only">{fullText}</span>
-                        <span aria-hidden="true">
+                        {/* Texto completo invisível reserva a altura final: a digitação não empurra o layout */}
+                        <span className="typewriter-ghost" aria-hidden="true">{fullText}|</span>
+                        <span className="typewriter-typed" aria-hidden="true">
                             {shouldReduceMotion ? fullText : text}<span className="cursor">|</span>
                         </span>
-                    </motion.p>
+                    </p>
 
-                    <motion.p
-                        className="hero-summary"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.45 }}
-                    >
+                    <p className="hero-summary">
                         {profile.summary}
-                    </motion.p>
+                    </p>
 
-                    <motion.div
-                        className="hero-actions"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.6 }}
-                    >
+                    <div className="hero-actions hero-enter hero-enter--pop" style={{ '--enter-delay': '0.6s' }}>
                         <a href="#projects" className="cta-button">Ver Projetos</a>
                         <a href={profile.resume} className="cta-button secondary" download>
                             <FaFileDownload aria-hidden="true" /> Baixar Currículo
                         </a>
-                    </motion.div>
+                    </div>
                 </div>
 
-                <motion.div
-                    className="hero-image-container"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                >
+                <div className="hero-image-container hero-enter hero-enter--slide" style={{ '--enter-delay': '0.2s' }}>
                     <div className="binary-particles" aria-hidden="true">
                         {particles.map((p, i) => (
                             <span
@@ -107,13 +111,15 @@ const Hero = () => {
                     </div>
                     <img
                         src={cartoonImage}
+                        srcSet={`${cartoonImageSmall} 440w, ${cartoonImage} 730w`}
+                        sizes="(max-width: 768px) 220px, 365px"
                         alt={`Avatar ilustrado de ${profile.name}`}
                         className="hero-cartoon"
                         width="730"
                         height="1000"
                         fetchPriority="high"
                     />
-                </motion.div>
+                </div>
             </div>
 
             <a href="#about" className="scroll-indicator" aria-label="Ir para a seção Sobre">

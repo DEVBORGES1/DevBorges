@@ -24,7 +24,7 @@ const Footer = () => {
                 <div className="status-dot"></div>
                 <span>Aberto a novas oportunidades</span>
             </div>
-            <p>&copy; {new Date().getFullYear()} {profile.name} ({profile.brand}). Todos os direitos reservados.</p>
+            <p suppressHydrationWarning>&copy; {new Date().getFullYear()} {profile.name} ({profile.brand}). Todos os direitos reservados.</p>
         </footer>
     );
 };

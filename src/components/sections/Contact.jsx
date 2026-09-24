@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
-import emailjs from '@emailjs/browser';
 import Section from '../layout/Section';
 import { socials } from '../../data/profile';
 import './Contact.css';
@@ -62,6 +61,8 @@ const Contact = () => {
 
         setStatus('sending');
         try {
+            // SDK carregado só no envio, fora do bundle inicial
+            const { default: emailjs } = await import('@emailjs/browser');
             await emailjs.send(
                 emailConfig.serviceId,
                 emailConfig.templateId,

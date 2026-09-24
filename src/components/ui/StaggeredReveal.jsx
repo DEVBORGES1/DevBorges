@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { m, useInView } from 'framer-motion';
 
 const StaggeredReveal = ({ children, staggerDelay = 0.2 }) => {
     const ref = useRef(null);
@@ -16,7 +16,7 @@ const StaggeredReveal = ({ children, staggerDelay = 0.2 }) => {
     };
 
     return (
-        <motion.div
+        <m.div
             ref={ref}
             variants={containerVariants}
             initial="hidden"
@@ -24,7 +24,7 @@ const StaggeredReveal = ({ children, staggerDelay = 0.2 }) => {
             style={{ width: '100%' }}
         >
             {children}
-        </motion.div>
+        </m.div>
     );
 };
 
@@ -35,9 +35,9 @@ export const RevealItem = ({ children, ...props }) => {
     };
 
     return (
-        <motion.div variants={itemVariants} {...props}>
+        <m.div variants={itemVariants} {...props}>
             {children}
-        </motion.div>
+        </m.div>
     );
 };
 

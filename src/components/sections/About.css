@@ -59,7 +59,6 @@
     font-size: 1rem;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
 }
 
 .premium-btn.github {
@@ -121,7 +120,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
 

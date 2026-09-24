@@ -37,6 +37,26 @@ Para as animações, não usei CSS puro para tudo porque queria um controle maio
     *   *Exemplo:* O componente `StaggeredReveal` faz os itens aparecerem um de cada vez em cascata, ao invés de aparecerem todos de uma vez de forma bruta.
 *   **Tilt Effect:** Nos cards de projetos, o hook `src/hooks/useTilt.js` inclina o card seguindo o cursor. Ele só ativa com mouse (sem efeito em touch) e é desligado quando o sistema pede menos movimento.
 
+##  Build e performance
+
+`npm run build` roda três etapas:
+
+1.  `vite build`: gera o site em `dist/`.
+2.  `vite build --ssr src/entry-server.jsx`: gera uma versão da aplicação que roda no Node.
+3.  `scripts/prerender.mjs`: renderiza a página para HTML, injeta em `dist/index.html`, embute o CSS e adiciona preload das fontes.
+
+Assim o conteúdo já vem no HTML (bom para SEO e para a primeira pintura) e o React só "hidrata" a página no navegador (`hydrateRoot` em `src/main.jsx`). No `npm run dev` não há pré-renderização: o React renderiza do zero.
+
+Para a hidratação funcionar, o HTML gerado no build e o do navegador precisam ser idênticos. Por isso as partículas do hero usam um gerador com semente fixa e a preferência de movimento reduzido vem de `usePrefersReducedMotion` (que assume `false` no build).
+
+Outras escolhas de performance:
+
+*   **Fontes locais** (`@fontsource-variable/inter` e `fira-code`): sem requisição bloqueante ao Google Fonts.
+*   **`LazyMotion`**: o núcleo de animação do framer-motion (`src/motionFeatures.js`) carrega depois da primeira renderização. Use sempre `m.div` (não `motion.div`); o modo `strict` acusa erro se esquecer.
+*   **Entradas do hero em CSS**: aparecem sem esperar o JavaScript.
+*   **Imagens WebP** no tamanho de exibição, com `srcset` no avatar e `loading="lazy"` nos projetos.
+*   Animações infinitas do hero pausadas quando ele sai da tela.
+
 ##  Deploy
 
 O deploy é feito na **Vercel**, integrada ao repositório do GitHub.

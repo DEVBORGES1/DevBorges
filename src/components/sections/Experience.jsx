@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '../layout/Section';
 import TechTags from '../ui/TechTags';
 import { experience } from '../../data/experience';
@@ -12,7 +12,7 @@ const Experience = () => {
                 {experience.map((item, index) => {
                     const Icon = item.icon;
                     return (
-                        <motion.article
+                        <m.article
                             key={`${item.title}-${item.org}`}
                             className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
                             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -38,7 +38,7 @@ const Experience = () => {
                                 </ul>
                                 <TechTags items={item.tech} />
                             </div>
-                        </motion.article>
+                        </m.article>
                     );
                 })}
             </div>

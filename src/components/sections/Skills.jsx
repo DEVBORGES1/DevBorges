@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import Section from '../layout/Section';
 import { skills, skillCategories } from '../../data/skills';
 import './Skills.css';
@@ -26,10 +26,10 @@ const Skills = () => {
                 ))}
             </div>
 
-            <motion.div layout className="skills-grid">
+            <m.div layout className="skills-grid">
                 <AnimatePresence>
                     {filteredSkills.map(({ name, icon: Icon, color }) => (
-                        <motion.div
+                        <m.div
                             key={name}
                             layout
                             initial={{ opacity: 0, scale: 0.8 }}
@@ -43,10 +43,10 @@ const Skills = () => {
                                 </div>
                                 <h3>{name}</h3>
                             </div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </AnimatePresence>
-            </motion.div>
+            </m.div>
         </Section>
     );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useActiveSection } from '../../hooks/useActiveSection';
 import './Header.css';
@@ -96,7 +96,7 @@ const Header = () => {
 
             <AnimatePresence>
                 {isOpen && (
-                    <motion.nav
+                    <m.nav
                         id="mobile-nav"
                         className="mobile-nav"
                         aria-label="Navegação principal"
@@ -106,7 +106,7 @@ const Header = () => {
                         transition={{ duration: 0.3 }}
                     >
                         <ul className="mobile-nav-links">{renderLinks(closeMenu)}</ul>
-                    </motion.nav>
+                    </m.nav>
                 )}
             </AnimatePresence>
         </header>

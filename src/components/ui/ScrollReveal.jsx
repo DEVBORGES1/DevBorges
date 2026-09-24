@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { m, useInView } from 'framer-motion';
 
 const ScrollReveal = ({ children, width = '100%' }) => {
     const ref = useRef(null);
@@ -7,7 +7,7 @@ const ScrollReveal = ({ children, width = '100%' }) => {
 
     return (
         <div ref={ref} style={{ position: 'relative', width, overflow: 'hidden' }}>
-            <motion.div
+            <m.div
                 variants={{
                     hidden: { opacity: 0, y: 75 },
                     visible: { opacity: 1, y: 0 },
@@ -17,7 +17,7 @@ const ScrollReveal = ({ children, width = '100%' }) => {
                 transition={{ duration: 0.5, delay: 0.25 }}
             >
                 {children}
-            </motion.div>
+            </m.div>
         </div>
     );
 };
