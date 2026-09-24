@@ -2,21 +2,18 @@ import { useEffect, useRef, useState } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useActiveSection } from '../../hooks/useActiveSection';
+import { useLocale } from '../../i18n/context';
+import { routes, otherLocale } from '../../i18n/routes';
 import './Header.css';
 
-const navItems = [
-    { name: 'Início', id: 'hero' },
-    { name: 'Sobre', id: 'about' },
-    { name: 'Experiência', id: 'experience' },
-    { name: 'Projetos', id: 'projects' },
-    { name: 'Habilidades', id: 'skills' },
-    { name: 'Contato', id: 'contact' },
-];
-const sectionIds = navItems.map((item) => item.id);
+const sectionIds = ['hero', 'about', 'experience', 'projects', 'skills', 'contact'];
 const NO_SECTIONS = [];
 
-// `homePath`: vazio na home (links #secao); '/' em outras páginas (links /#secao).
-const Header = ({ homePath = '' }) => {
+// Na home os links são âncoras (#secao); nas outras páginas apontam para a home do idioma (/en/#secao).
+const Header = ({ page }) => {
+    const { locale, t } = useLocale();
+    const homePath = page === 'home' ? '' : routes.home[locale];
+    const alternate = otherLocale(locale);
     const [isOpen, setIsOpen] = useState(false);
     const activeId = useActiveSection(homePath ? NO_SECTIONS : sectionIds);
     const headerRef = useRef(null);
@@ -59,7 +56,7 @@ const Header = ({ homePath = '' }) => {
     }, [isOpen]);
 
     const renderLinks = (onClick) =>
-        navItems.map(({ name, id }) => {
+        sectionIds.map((id) => {
             const isActive = activeId === id;
             return (
                 <li key={id}>
@@ -69,7 +66,7 @@ const Header = ({ homePath = '' }) => {
                         aria-current={isActive ? 'location' : undefined}
                         onClick={onClick}
                     >
-                        {name}
+                        {t.nav.items[id]}
                     </a>
                 </li>
             );
@@ -77,18 +74,28 @@ const Header = ({ homePath = '' }) => {
 
     return (
         <header className="header" ref={headerRef}>
-            <nav className="nav-container" aria-label="Navegação principal">
-                <a href={`${homePath}#hero`} className="logo" aria-label="DEVBORGES — voltar ao início">
+            <nav className="nav-container" aria-label={t.nav.label}>
+                <a href={`${homePath}#hero`} className="logo" aria-label={t.nav.logo}>
                     &lt;DEVBORGES/&gt;
                 </a>
 
                 <ul className="nav-links">{renderLinks()}</ul>
 
+                <a
+                    href={routes[page][alternate]}
+                    className="lang-switch"
+                    hrefLang={t.nav.switchLanguage.hrefLang}
+                    lang={t.nav.switchLanguage.hrefLang}
+                    aria-label={t.nav.switchLanguage.aria}
+                >
+                    {t.nav.switchLanguage.label}
+                </a>
+
                 <button
                     ref={menuButtonRef}
                     className="mobile-menu-btn"
                     onClick={() => setIsOpen((open) => !open)}
-                    aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
+                    aria-label={isOpen ? t.nav.closeMenu : t.nav.openMenu}
                     aria-expanded={isOpen}
                     aria-controls="mobile-nav"
                 >
@@ -101,7 +108,7 @@ const Header = ({ homePath = '' }) => {
                     <m.nav
                         id="mobile-nav"
                         className="mobile-nav"
-                        aria-label="Navegação principal"
+                        aria-label={t.nav.label}
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}

@@ -10,6 +10,8 @@ const dist = `${root}dist`;
 const pages = [
     { name: 'home', html: 'index.html' },
     { name: 'nexus', html: 'cases/nexus/index.html' },
+    { name: 'home-en', html: 'en/index.html' },
+    { name: 'nexus-en', html: 'en/cases/nexus/index.html' },
 ];
 
 const { render } = await import(pathToFileURL(`${root}dist-ssr/entry-server.js`).href);

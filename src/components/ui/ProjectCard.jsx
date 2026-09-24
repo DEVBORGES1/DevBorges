@@ -1,8 +1,10 @@
 import Tilt from './Tilt';
 import TechTags from './TechTags';
+import { useLocale } from '../../i18n/context';
 
 const ProjectCard = ({ project }) => {
     const { title, description, image, imageAlt, tech, repo, demo } = project;
+    const { t } = useLocale();
 
     return (
         <Tilt className="tilt-card-wrapper" max={10} scale={1.03}>
@@ -20,7 +22,7 @@ const ProjectCard = ({ project }) => {
                     {/* Atalho visual no hover; fora da ordem do Tab porque duplica o link "Ver no GitHub" abaixo */}
                     <div className="project-overlay" aria-hidden="true">
                         <a href={demo ?? repo} target="_blank" rel="noopener noreferrer" className="project-link-overlay" tabIndex={-1}>
-                            Ver Projeto
+                            {t.projects.overlay}
                         </a>
                     </div>
                 </div>
@@ -30,11 +32,11 @@ const ProjectCard = ({ project }) => {
                     <p>{description}</p>
                     <div className="project-links">
                         <a href={repo} target="_blank" rel="noopener noreferrer" className="project-link">
-                            Ver no GitHub &rarr;
+                            {t.projects.repo} &rarr;
                         </a>
                         {demo && (
                             <a href={demo} target="_blank" rel="noopener noreferrer" className="project-link">
-                                Ver site &rarr;
+                                {t.projects.demo} &rarr;
                             </a>
                         )}
                     </div>

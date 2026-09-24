@@ -43,10 +43,18 @@ O site é multi-página (Vite `build.rollupOptions.input` em `vite.config.js`), 
 
 | URL | HTML | Componente |
 |---|---|---|
-| `/` | `index.html` | `src/App.jsx` |
-| `/cases/nexus/` | `cases/nexus/index.html` | `src/pages/NexusCase.jsx` (conteúdo em `src/data/cases/nexus.js`) |
+| `/` e `/en/` | `index.html`, `en/index.html` | `src/App.jsx` |
+| `/cases/nexus/` e `/en/cases/nexus/` | `cases/nexus/index.html`, `en/cases/nexus/index.html` | `src/pages/NexusCase.jsx` (conteúdo em `src/data/cases/nexus.js`) |
 
-Cada página tem o próprio HTML (título, descrição, canonical e Open Graph) e usa o `AppShell` (header, rodapé e animações). Fora da home, o header recebe `homePath="/"` para que os links apontem para `/#secao`.
+Cada página tem o próprio HTML (título, descrição, canonical, `hreflang` e Open Graph) e usa o `AppShell` (idioma, header, rodapé e animações). Fora da home, os links do header apontam para a home do idioma (`/#secao` ou `/en/#secao`).
+
+##  Idiomas (PT/EN)
+
+*   `src/i18n/strings.js`: textos de interface (menu, botões, títulos, formulário) em `pt` e `en`.
+*   `src/i18n/routes.js`: URL de cada página em cada idioma, usada pelo botão PT/EN do header.
+*   `src/data/`: o conteúdo guarda imagens, links e tecnologias uma vez só e os textos por idioma (`getExperience(locale)`, `getProjects(locale)`, `about[locale]`, `getNexusCase(locale)`).
+*   Componentes leem o idioma com `useLocale()` (`{ locale, t }`).
+*   Os testes E2E verificam que as páginas em inglês não têm textos de interface em português.
 
 Para criar uma página nova: crie o HTML, uma entrada em `src/pages/<nome>/main.jsx` chamando `mount(<Pagina />)`, adicione a entrada no `vite.config.js`, a página em `src/entry-server.jsx` e em `scripts/prerender.mjs`, e a URL em `public/sitemap.xml`.
 

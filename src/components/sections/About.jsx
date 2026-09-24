@@ -2,17 +2,16 @@ import { m } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFileDownload } from 'react-icons/fa';
 import Section from '../layout/Section';
 import { profile, socials } from '../../data/profile';
+import { about } from '../../data/about';
+import { useLocale } from '../../i18n/context';
 import './About.css';
 
-const stats = [
-    { number: '8 meses', label: 'como Software Engineer na Nexus Labz', delay: 0.2 },
-    { number: '2 apps', label: 'mobile em React Native entregues do início ao fim', delay: 0.3 },
-    { number: 'Dez/2027', label: 'conclusão em Ciência da Computação (Unoesc)', delay: 0.4 },
-];
-
 const About = () => {
+    const { locale, t } = useLocale();
+    const { paragraphs, stats } = about[locale];
+
     return (
-        <Section id="about" className="about" title="Sobre Mim">
+        <Section id="about" className="about" title={t.about.title}>
             <div className="about-container">
                 <m.div
                     className="about-text-column"
@@ -21,18 +20,14 @@ const About = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h3>Software Engineer</h3>
-                    <p>
-                        Sou Software Engineer e estudante de Ciência da Computação. Na <strong>Nexus Labz</strong>,
-                        levei um app React Native do zero à produção: arquitetura, autenticação com JWT e OAuth,
-                        pagamentos, servidor com Nginx e pipeline de deploy no GitHub Actions.
-                    </p>
-                    <p>
-                        Também desenvolvo sistemas completos para clientes e projetos próprios, com
-                        <strong> TypeScript, Node.js, PHP/Laravel, Python e C#/.NET</strong> e bancos como
-                        PostgreSQL, MySQL e SQL Server. Meu foco é backend: modelagem de dados, regras de
-                        negócio, integrações e infraestrutura.
-                    </p>
+                    <h3>{t.about.role}</h3>
+                    {paragraphs.map((segments, index) => (
+                        <p key={index}>
+                            {segments.map((segment, i) =>
+                                typeof segment === 'string' ? segment : <strong key={i}>{segment.strong}</strong>,
+                            )}
+                        </p>
+                    ))}
 
                     <div className="about-actions">
                         <a href={socials.github} target="_blank" rel="noopener noreferrer" className="premium-btn github">
@@ -45,21 +40,21 @@ const About = () => {
                         </a>
                         <a href={profile.resume} className="premium-btn resume" download>
                             <FaFileDownload className="btn-icon" aria-hidden="true" />
-                            <span>Currículo</span>
+                            <span>{t.about.resume}</span>
                         </a>
                     </div>
                 </m.div>
 
                 <div className="about-stats-column">
                     <div className="stats-grid">
-                        {stats.map((stat) => (
+                        {stats.map((stat, index) => (
                             <m.div
                                 key={stat.number}
                                 className="stat-card"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: stat.delay }}
+                                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                             >
                                 <span className="stat-number">{stat.number}</span>
                                 <span className="stat-label">{stat.label}</span>

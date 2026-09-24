@@ -2,26 +2,29 @@ import { useState } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import Section from '../layout/Section';
 import { skills, skillCategories } from '../../data/skills';
+import { useLocale } from '../../i18n/context';
 import './Skills.css';
 
 const Skills = () => {
-    const [activeCategory, setActiveCategory] = useState('Todos');
+    const { locale, t } = useLocale();
+    const [activeCategory, setActiveCategory] = useState('all');
+    const tabs = [{ id: 'all', label: t.skills.all }, ...skillCategories.map((c) => ({ id: c.id, label: c.label[locale] }))];
 
-    const filteredSkills = activeCategory === 'Todos'
+    const filteredSkills = activeCategory === 'all'
         ? skills
         : skills.filter(skill => skill.category === activeCategory);
 
     return (
-        <Section id="skills" className="skills" title="Habilidades & Tecnologias">
+        <Section id="skills" className="skills" title={t.skills.title}>
             <div className="skills-tabs">
-                {skillCategories.map((category) => (
+                {tabs.map(({ id, label }) => (
                     <button
-                        key={category}
-                        className={`tab-btn ${activeCategory === category ? 'active' : ''}`}
-                        aria-pressed={activeCategory === category}
-                        onClick={() => setActiveCategory(category)}
+                        key={id}
+                        className={`tab-btn ${activeCategory === id ? 'active' : ''}`}
+                        aria-pressed={activeCategory === id}
+                        onClick={() => setActiveCategory(id)}
                     >
-                        {category}
+                        {label}
                     </button>
                 ))}
             </div>

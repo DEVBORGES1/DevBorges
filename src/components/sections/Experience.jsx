@@ -1,19 +1,24 @@
 import { m } from 'framer-motion';
 import Section from '../layout/Section';
 import TechTags from '../ui/TechTags';
-import { experience } from '../../data/experience';
+import { getExperience } from '../../data/experience';
+import { useLocale } from '../../i18n/context';
+import { routes } from '../../i18n/routes';
 import './Experience.css';
 
 const Experience = () => {
+    const { locale, t } = useLocale();
+    const experience = getExperience(locale);
+
     return (
-        <Section id="experience" className="experience" title="Experiência">
+        <Section id="experience" className="experience" title={t.experience.title}>
             <div className="timeline-container">
                 <div className="timeline-line"></div>
                 {experience.map((item, index) => {
                     const Icon = item.icon;
                     return (
                         <m.article
-                            key={`${item.title}-${item.org}`}
+                            key={item.id}
                             className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
                             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -38,8 +43,8 @@ const Experience = () => {
                                 </ul>
                                 <TechTags items={item.tech} />
                                 {item.caseStudy && (
-                                    <a href={item.caseStudy} className="timeline-case-link">
-                                        Ler o case study &rarr;
+                                    <a href={routes[item.caseStudy][locale]} className="timeline-case-link">
+                                        {t.experience.caseLink} &rarr;
                                     </a>
                                 )}
                             </div>

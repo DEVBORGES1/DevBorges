@@ -5,6 +5,7 @@ import cartoonImage from '../../assets/projects/cartoon.webp';
 import cartoonImageSmall from '../../assets/projects/cartoon-440.webp';
 import { profile } from '../../data/profile';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
+import { useLocale } from '../../i18n/context';
 import './Hero.css';
 
 const fullText = profile.role;
@@ -31,6 +32,7 @@ const particles = Array.from({ length: 20 }, () => ({
 }));
 
 const Hero = () => {
+    const { locale, t } = useLocale();
     const [text, setText] = useState('');
     const sectionRef = useRef(null);
     const shouldReduceMotion = usePrefersReducedMotion();
@@ -68,7 +70,7 @@ const Hero = () => {
             <div className="hero-container">
                 <div className="hero-text">
                     <h1 className="hero-enter hero-enter--title">
-                        <span className="hero-greeting">Olá, eu sou</span>{' '}
+                        <span className="hero-greeting">{t.hero.greeting}</span>{' '}
                         João Vitor <span className="highlight">Pereira</span>
                     </h1>
 
@@ -82,13 +84,13 @@ const Hero = () => {
                     </p>
 
                     <p className="hero-summary">
-                        {profile.summary}
+                        {profile.summary[locale]}
                     </p>
 
                     <div className="hero-actions hero-enter hero-enter--pop" style={{ '--enter-delay': '0.6s' }}>
-                        <a href="#projects" className="cta-button">Ver Projetos</a>
+                        <a href="#projects" className="cta-button">{t.hero.projectsCta}</a>
                         <a href={profile.resume} className="cta-button secondary" download>
-                            <FaFileDownload aria-hidden="true" /> Baixar Currículo
+                            <FaFileDownload aria-hidden="true" /> {t.hero.resumeCta}
                         </a>
                     </div>
                 </div>
@@ -113,7 +115,7 @@ const Hero = () => {
                         src={cartoonImage}
                         srcSet={`${cartoonImageSmall} 440w, ${cartoonImage} 730w`}
                         sizes="(max-width: 768px) 220px, 365px"
-                        alt={`Avatar ilustrado de ${profile.name}`}
+                        alt={t.hero.avatarAlt}
                         className="hero-cartoon"
                         width="730"
                         height="1000"
@@ -122,7 +124,7 @@ const Hero = () => {
                 </div>
             </div>
 
-            <a href="#about" className="scroll-indicator" aria-label="Ir para a seção Sobre">
+            <a href="#about" className="scroll-indicator" aria-label={t.hero.scrollDown}>
                 <FaChevronDown />
             </a>
         </section>

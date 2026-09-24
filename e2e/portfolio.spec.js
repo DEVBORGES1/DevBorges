@@ -197,3 +197,63 @@ test.describe('case study Nexus Labz', () => {
         expect(results.violations.map((v) => `${v.id}: ${v.nodes.length} elemento(s)`)).toEqual([]);
     });
 });
+
+test.describe('versão em inglês', () => {
+    const portugueseUi = ['Ver Projetos', 'Baixar Currículo', 'Sobre Mim', 'Meus Projetos', 'Enviar Mensagem', 'Ver no GitHub', 'Todos os direitos', 'Aberto a novas', 'Ler o case study', 'Voltar ao portfólio', 'Decisões técnicas'];
+
+    for (const path of ['/en/', '/en/cases/nexus/']) {
+        test(`${path} é pré-renderizada em inglês, sem textos de interface em português`, async ({ request }) => {
+            const html = await (await request.get(path)).text();
+            expect(html).toContain('<html lang="en">');
+            expect(html).toContain('hreflang="pt-BR"');
+            for (const text of portugueseUi) expect(html, text).not.toContain(text);
+        });
+
+        test(`${path} sem erros de console e sem violações WCAG A/AA`, async ({ page }) => {
+            const problems = [];
+            page.on('console', (msg) => msg.type() === 'error' && problems.push(msg.text()));
+            page.on('pageerror', (err) => problems.push(err.message));
+            await page.emulateMedia({ reducedMotion: 'reduce' });
+            await page.goto(path);
+            await page.evaluate(async () => {
+                for (let y = 0; y < document.body.scrollHeight; y += 400) {
+                    window.scrollTo(0, y);
+                    await new Promise((r) => setTimeout(r, 50));
+                }
+            });
+            await page.waitForTimeout(800);
+            expect(problems).toEqual([]);
+
+            const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze();
+            expect(results.violations.map((v) => `${v.id}: ${v.nodes.length} elemento(s)`)).toEqual([]);
+        });
+    }
+
+    test('troca de idioma leva à página equivalente', async ({ page }) => {
+        await page.goto('/');
+        await page.getByRole('link', { name: 'Read in English' }).click();
+        await expect(page).toHaveURL(/\/en\/$/);
+        await expect(page.getByRole('heading', { level: 2, name: 'Experience' })).toBeVisible();
+
+        await page.getByRole('link', { name: /Read the case study/ }).click();
+        await expect(page).toHaveURL(/\/en\/cases\/nexus\/$/);
+        await expect(page.getByRole('heading', { level: 1 })).toContainText('From zero to production');
+
+        await page.getByRole('link', { name: 'Ler em português' }).click();
+        await expect(page).toHaveURL(/\/cases\/nexus\/$/);
+        await expect(page.getByRole('heading', { level: 1 })).toContainText('Do zero à produção');
+    });
+
+    test('filtro e formulário funcionam em inglês', async ({ page }) => {
+        await page.route('https://api.emailjs.com/**', (route) => route.fulfill({ status: 200, body: 'OK' }));
+        await page.goto('/en/');
+        await page.getByRole('button', { name: 'Databases' }).click();
+        await expect(page.locator('#skills .skill-card h3')).toHaveCount(5);
+
+        await page.getByLabel('Your name').fill('Recruiter');
+        await page.getByLabel('Your email').fill('recruiter@example.com');
+        await page.getByLabel('Your message').fill('Hi! Loved your portfolio.');
+        await page.getByRole('button', { name: 'Send Message' }).click();
+        await expect(page.getByRole('status')).toContainText('Message sent');
+    });
+});

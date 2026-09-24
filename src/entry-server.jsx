@@ -5,8 +5,10 @@ import NexusCase from './pages/NexusCase.jsx';
 
 // Usado só no build (scripts/prerender.mjs) para gerar o HTML estático de cada página.
 const pages = {
-    home: App,
-    nexus: NexusCase,
+    home: () => <App locale="pt" />,
+    nexus: () => <NexusCase locale="pt" />,
+    'home-en': () => <App locale="en" />,
+    'nexus-en': () => <NexusCase locale="en" />,
 };
 
 export function render(pageName) {

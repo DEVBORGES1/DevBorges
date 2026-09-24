@@ -15,6 +15,8 @@ export default defineConfig({
       input: {
         main: page('./index.html'),
         nexus: page('./cases/nexus/index.html'),
+        homeEn: page('./en/index.html'),
+        nexusEn: page('./en/cases/nexus/index.html'),
       },
     },
   },

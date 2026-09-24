@@ -1,5 +1,6 @@
 import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import { profile, socials } from '../../data/profile';
+import { useLocale } from '../../i18n/context';
 import './Footer.css';
 
 const footerLinks = [
@@ -10,6 +11,7 @@ const footerLinks = [
 ];
 
 const Footer = () => {
+    const { t } = useLocale();
     return (
         <footer className="footer">
             <div className="footer-socials">
@@ -22,9 +24,9 @@ const Footer = () => {
 
             <div className="footer-status">
                 <div className="status-dot"></div>
-                <span>Aberto a novas oportunidades</span>
+                <span>{t.footer.status}</span>
             </div>
-            <p suppressHydrationWarning>&copy; {new Date().getFullYear()} {profile.name} ({profile.brand}). Todos os direitos reservados.</p>
+            <p suppressHydrationWarning>&copy; {new Date().getFullYear()} {profile.name} ({profile.brand}). {t.footer.rights}</p>
         </footer>
     );
 };

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import Section from '../layout/Section';
 import { socials } from '../../data/profile';
+import { useLocale } from '../../i18n/context';
 import './Contact.css';
 
 const emailConfig = {
@@ -21,12 +22,8 @@ const contactLinks = [
 const initialForm = { name: '', email: '', message: '' };
 const SUCCESS_MESSAGE_MS = 5000;
 
-const statusMessages = {
-    success: 'Mensagem enviada com sucesso! Respondo em breve.',
-    error: 'Não foi possível enviar agora. Tente novamente ou me chame por e-mail ou LinkedIn.',
-};
-
 const Contact = () => {
+    const { t } = useLocale();
     const [formData, setFormData] = useState(initialForm);
     const [status, setStatus] = useState('idle'); // idle | sending | success | error
     const resetTimer = useRef(null);
@@ -80,14 +77,14 @@ const Contact = () => {
         }
     };
 
-    const statusMessage = statusMessages[status];
+    const statusMessage = { success: t.contact.success, error: t.contact.error }[status];
 
     return (
-        <Section id="contact" className="contact" title="Contato">
+        <Section id="contact" className="contact" title={t.contact.title}>
             <div className="contact-container">
                 <div className="contact-info">
-                    <h3>Vamos conversar?</h3>
-                    <p>Estou aberto a vagas de Software Engineer (backend ou full stack) e a projetos freelance. Me chame pelo formulário, e-mail ou LinkedIn.</p>
+                    <h3>{t.contact.heading}</h3>
+                    <p>{t.contact.text}</p>
 
                     <div className="contact-socials">
                         {contactLinks.map(({ href, label, icon: Icon, className, external }) => (
@@ -105,12 +102,12 @@ const Contact = () => {
 
                 <form className="contact-form" onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="contact-name" className="sr-only">Seu nome</label>
+                        <label htmlFor="contact-name" className="sr-only">{t.contact.name.label}</label>
                         <input
                             id="contact-name"
                             type="text"
                             name="name"
-                            placeholder="Seu Nome"
+                            placeholder={t.contact.name.placeholder}
                             autoComplete="name"
                             maxLength={100}
                             value={formData.name}
@@ -119,12 +116,12 @@ const Contact = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="contact-email" className="sr-only">Seu e-mail</label>
+                        <label htmlFor="contact-email" className="sr-only">{t.contact.email.label}</label>
                         <input
                             id="contact-email"
                             type="email"
                             name="email"
-                            placeholder="Seu Email"
+                            placeholder={t.contact.email.placeholder}
                             autoComplete="email"
                             maxLength={120}
                             value={formData.email}
@@ -133,12 +130,12 @@ const Contact = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="contact-message" className="sr-only">Sua mensagem</label>
+                        <label htmlFor="contact-message" className="sr-only">{t.contact.message.label}</label>
                         <textarea
                             id="contact-message"
                             name="message"
                             rows="5"
-                            placeholder="Sua Mensagem"
+                            placeholder={t.contact.message.placeholder}
                             maxLength={2000}
                             value={formData.message}
                             onChange={handleChange}
@@ -146,11 +143,11 @@ const Contact = () => {
                         ></textarea>
                     </div>
                     <div className="form-honeypot" aria-hidden="true">
-                        <label htmlFor="contact-website">Deixe este campo vazio</label>
+                        <label htmlFor="contact-website">{t.contact.honeypot}</label>
                         <input id="contact-website" type="text" name="website" tabIndex={-1} autoComplete="off" />
                     </div>
                     <button type="submit" className="submit-btn" disabled={status === 'sending'}>
-                        {status === 'sending' ? 'Enviando...' : 'Enviar Mensagem'}
+                        {status === 'sending' ? t.contact.sending : t.contact.submit}
                     </button>
                     <div className="form-status" role="status" aria-live="polite">
                         {statusMessage && <p className={`status-msg ${status}`}>{statusMessage}</p>}

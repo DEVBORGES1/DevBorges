@@ -7,9 +7,9 @@ import Skills from './components/sections/Skills';
 import Contact from './components/sections/Contact';
 import ScrollReveal from './components/ui/ScrollReveal';
 
-function App() {
+function App({ locale = 'pt' }) {
   return (
-    <AppShell>
+    <AppShell page="home" locale={locale}>
       <Hero />
       <About />
       <Experience />
