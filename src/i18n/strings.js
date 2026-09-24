@@ -38,7 +38,7 @@ export const strings = {
         contact: {
             title: 'Contato',
             heading: 'Vamos conversar?',
-            text: 'Estou aberto a vagas de Software Engineer (backend ou full stack) e a projetos freelance. Me chame pelo formulário, e-mail ou LinkedIn.',
+            text: 'Estou aberto a vagas de Software Engineer Full Stack e a projetos freelance. Me chame pelo formulário, e-mail ou LinkedIn.',
             name: { label: 'Seu nome', placeholder: 'Seu Nome' },
             email: { label: 'Seu e-mail', placeholder: 'Seu Email' },
             message: { label: 'Sua mensagem', placeholder: 'Sua Mensagem' },
@@ -105,7 +105,7 @@ export const strings = {
         contact: {
             title: 'Contact',
             heading: 'Let’s talk?',
-            text: 'I’m open to Software Engineer roles (backend or full stack) and freelance projects. Reach out through the form, email or LinkedIn.',
+            text: 'I’m open to Full Stack Software Engineer roles and freelance projects. Reach out through the form, email or LinkedIn.',
             name: { label: 'Your name', placeholder: 'Your Name' },
             email: { label: 'Your email', placeholder: 'Your Email' },
             message: { label: 'Your message', placeholder: 'Your Message' },

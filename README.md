@@ -6,7 +6,7 @@ Bem-vindo ao meu espaço na web! Aqui é onde eu mostro um pouco do que eu sei f
 
 ## Sobre Mim
 
-Sou o João Vitor Pereira (DEVBORGES), Software Engineer com foco em backend e estudante de Ciência da Computação na Unoesc. Trabalhei como Software Engineer Jr na Nexus Labz, onde levei um app React Native do zero à produção (JWT, OAuth, pagamentos, Nginx e CI/CD), e desenvolvo projetos para clientes e próprios com TypeScript, Node.js, PHP/Laravel, Python e C#/.NET.
+Sou o João Vitor Pereira (DEVBORGES), Software Engineer Full Stack e estudante de Ciência da Computação na Unoesc. Trabalhei como Software Engineer Jr na Nexus Labz, onde levei um app React Native do zero à produção (JWT, OAuth, pagamentos, Nginx e CI/CD), e desenvolvo projetos para clientes e próprios com TypeScript, Node.js, PHP/Laravel, Python e C#/.NET.
 
 🔗 **Portfólio no ar:** [devborges.vercel.app](https://devborges.vercel.app/) · [English version](https://devborges.vercel.app/en/) · [Case study Nexus Labz](https://devborges.vercel.app/cases/nexus/)
 

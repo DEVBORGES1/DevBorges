@@ -1,7 +1,7 @@
 export const profile = {
     name: 'João Vitor Pereira',
     brand: 'DEVBORGES',
-    role: 'Software Engineer · Full Stack & Backend',
+    role: 'Software Engineer · Full Stack',
     resume: {
         pt: '/curriculo-joao-vitor-pereira.pdf',
         en: '/resume-joao-vitor-pereira.pdf',
