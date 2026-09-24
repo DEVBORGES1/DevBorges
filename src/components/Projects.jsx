@@ -1,9 +1,9 @@
 import StaggeredReveal, { RevealItem } from './StaggeredReveal';
 import { Tilt } from 'react-tilt';
-import rcpImg from '../assets/projects/RCP1.png';
-import expenseImg from '../assets/projects/ExpenseControl.png';
-import linkthreeImg from '../assets/projects/linkthree.png';
-import videoImg from '../assets/projects/video.png';
+import rcpImg from '../assets/projects/rcp.webp';
+import expenseImg from '../assets/projects/expense-control.webp';
+import linkthreeImg from '../assets/projects/linkthree.webp';
+import videoImg from '../assets/projects/video-analyzer.webp';
 
 const Projects = () => {
     const projects = [
@@ -61,9 +61,18 @@ const Projects = () => {
                             <Tilt options={defaultOptions} className="tilt-card-wrapper">
                                 <div className="project-card">
                                     <div className="project-image-container">
-                                        <img src={project.image} alt={project.title} className="project-image" />
-                                        <div className="project-overlay">
-                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link-overlay">
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="project-image"
+                                            width="800"
+                                            height="420"
+                                            loading="lazy"
+                                            decoding="async"
+                                        />
+                                        {/* Atalho visual no hover; fora da ordem do Tab porque duplica o link "Ver no GitHub" abaixo */}
+                                        <div className="project-overlay" aria-hidden="true">
+                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link-overlay" tabIndex={-1}>
                                                 Ver Projeto
                                             </a>
                                         </div>
