@@ -30,6 +30,7 @@ export const strings = {
             repo: 'Ver no GitHub',
             demo: 'Ver site',
             overlay: 'Ver Projeto',
+            privateCode: 'Projeto para cliente · código privado',
         },
         skills: {
             title: 'Habilidades & Tecnologias',
@@ -97,6 +98,7 @@ export const strings = {
             repo: 'View on GitHub',
             demo: 'Visit site',
             overlay: 'View Project',
+            privateCode: 'Client project · private code',
         },
         skills: {
             title: 'Skills & Technologies',

@@ -99,6 +99,16 @@ test.describe('navegação', () => {
     });
 });
 
+test.describe('projetos', () => {
+    test('projeto de cliente sem repositório público mostra aviso em vez do GitHub', async ({ page }) => {
+        await page.goto('/');
+        const card = page.locator('.project-card', { hasText: 'App Vitale' });
+        await expect(card).toContainText('Projeto para cliente · código privado');
+        await expect(card.getByRole('link', { name: /Ver no GitHub/ })).toHaveCount(0);
+        await expect(card.locator('img')).toHaveAttribute('alt', /Mockups do App Vitale/);
+    });
+});
+
 test.describe('habilidades', () => {
     test('filtro por categoria mostra só os itens da categoria', async ({ page }) => {
         await page.goto('/');
