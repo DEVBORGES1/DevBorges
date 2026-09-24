@@ -16,6 +16,8 @@
 
   --font-family: 'Inter Variable', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-mono: 'Fira Code Variable', 'Fira Code', 'Courier New', monospace;
+  /* Fonte de títulos (h1, títulos de seção, faixa e CTA) */
+  --font-display: 'Syne Variable', 'Syne', var(--font-family);
 
   /* Só propriedades baratas de animar (sem `all`, que inclui propriedades de layout) */
   --transition-props: color, background-color, border-color, box-shadow, transform, filter, opacity;

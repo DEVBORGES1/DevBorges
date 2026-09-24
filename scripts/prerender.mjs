@@ -16,10 +16,10 @@ const pages = [
 
 const { render } = await import(pathToFileURL(`${root}dist-ssr/entry-server.js`).href);
 
-// Preload das fontes latinas (Inter e Fira Code): chegam antes da primeira pintura,
+// Preload das fontes latinas (Inter, Fira Code e Syne): chegam antes da primeira pintura,
 // evitando a troca de fonte que desloca o texto.
 const fontFiles = (await readdir(`${dist}/assets`)).filter((file) =>
-    /^(inter|fira-code)-latin-wght-normal-.*\.woff2$/.test(file),
+    /^(inter|fira-code|syne)-latin-wght-normal-.*\.woff2$/.test(file),
 );
 const preloadTags = fontFiles
     .map((file) => `<link rel="preload" href="/assets/${file}" as="font" type="font/woff2" crossorigin />`)

@@ -3,6 +3,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client';
 // Fontes hospedadas junto com o site (sem requisição bloqueante ao Google Fonts)
 import '@fontsource-variable/inter';
 import '@fontsource-variable/fira-code';
+import '@fontsource-variable/syne';
 import './index.css';
 
 // No build o HTML já vem pré-renderizado (scripts/prerender.mjs): hidrata.

@@ -1,0 +1,63 @@
+/* Faixa de áreas de atuação */
+.marquee {
+    overflow: hidden;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    /* Esmaece as bordas laterais */
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 40s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.marquee-list {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.marquee-list li {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    white-space: nowrap;
+    /* Cinza discreto, mas com contraste 3:1 exigido para texto grande */
+    color: #6b6b75;
+    transition: color 0.3s ease;
+}
+
+.marquee-list li:hover {
+    color: var(--text-primary);
+}
+
+.marquee-separator {
+    margin: 0 1.5rem;
+    font-size: 0.5em;
+    color: var(--text-accent);
+}
+
+@keyframes marquee-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Com menos movimento: faixa parada */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
+    }
+}

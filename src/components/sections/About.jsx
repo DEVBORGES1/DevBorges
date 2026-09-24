@@ -1,6 +1,7 @@
 import { m } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFileDownload } from 'react-icons/fa';
 import Section from '../layout/Section';
+import ScrollLitText from '../ui/ScrollLitText';
 import { profile, socials } from '../../data/profile';
 import { about } from '../../data/about';
 import { useLocale } from '../../i18n/context';
@@ -21,13 +22,7 @@ const About = () => {
                     transition={{ duration: 0.6 }}
                 >
                     <h3>{t.about.role}</h3>
-                    {paragraphs.map((segments, index) => (
-                        <p key={index}>
-                            {segments.map((segment, i) =>
-                                typeof segment === 'string' ? segment : <strong key={i}>{segment.strong}</strong>,
-                            )}
-                        </p>
-                    ))}
+                    <ScrollLitText paragraphs={paragraphs} />
 
                     <div className="about-actions">
                         <a href={socials.github} target="_blank" rel="noopener noreferrer" className="premium-btn github">

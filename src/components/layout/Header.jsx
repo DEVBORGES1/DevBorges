@@ -8,6 +8,7 @@ import './Header.css';
 
 const sectionIds = ['hero', 'about', 'experience', 'projects', 'skills', 'contact'];
 const NO_SECTIONS = [];
+const SCROLL_THRESHOLD = 40;
 
 // Na home os links são âncoras (#secao); nas outras páginas apontam para a home do idioma (/en/#secao).
 const Header = ({ page }) => {
@@ -15,11 +16,20 @@ const Header = ({ page }) => {
     const homePath = page === 'home' ? '' : routes.home[locale];
     const alternate = otherLocale(locale);
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     const activeId = useActiveSection(homePath ? NO_SECTIONS : sectionIds);
     const headerRef = useRef(null);
     const menuButtonRef = useRef(null);
 
     const closeMenu = () => setIsOpen(false);
+
+    // Depois do topo da página o header vira uma "pílula" flutuante centralizada
+    useEffect(() => {
+        const update = () => setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
+        update();
+        window.addEventListener('scroll', update, { passive: true });
+        return () => window.removeEventListener('scroll', update);
+    }, []);
 
     // Com o menu mobile aberto: trava o scroll da página, fecha com Esc,
     // com toque fora do header ou quando a tela passa para o layout desktop.
@@ -73,7 +83,7 @@ const Header = ({ page }) => {
         });
 
     return (
-        <header className="header" ref={headerRef}>
+        <header className={`header${isScrolled ? ' is-scrolled' : ''}`} ref={headerRef}>
             <nav className="nav-container" aria-label={t.nav.label}>
                 <a href={`${homePath}#hero`} className="logo" aria-label={t.nav.logo}>
                     &lt;DEVBORGES/&gt;

@@ -32,6 +32,17 @@ export const strings = {
             overlay: 'Ver Projeto',
             privateCode: 'Projeto para cliente · código privado',
         },
+        marquee: {
+            label: 'Áreas de atuação',
+            items: ['Backend', 'Frontend', 'Mobile', 'APIs REST', 'Bancos de Dados', 'DevOps', 'Testes', 'Arquitetura'],
+        },
+        cta: {
+            status: 'Disponível para trabalho',
+            heading: 'Vamos construir sua',
+            highlight: 'próxima ideia.',
+            text: 'Aberto a vagas de Software Engineer Full Stack e a projetos freelance, do banco de dados à produção.',
+            contact: 'Entrar em contato',
+        },
         skills: {
             title: 'Habilidades & Tecnologias',
             all: 'Todos',
@@ -99,6 +110,17 @@ export const strings = {
             demo: 'Visit site',
             overlay: 'View Project',
             privateCode: 'Client project · private code',
+        },
+        marquee: {
+            label: 'Areas of expertise',
+            items: ['Backend', 'Frontend', 'Mobile', 'REST APIs', 'Databases', 'DevOps', 'Testing', 'Architecture'],
+        },
+        cta: {
+            status: 'Available for work',
+            heading: 'Let’s build your',
+            highlight: 'next big idea.',
+            text: 'Open to Full Stack Software Engineer roles and freelance projects, from the database to production.',
+            contact: 'Get in touch',
         },
         skills: {
             title: 'Skills & Technologies',
