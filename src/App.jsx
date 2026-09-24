@@ -1,3 +1,4 @@
+import { MotionConfig } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -12,23 +13,25 @@ import ScrollProgress from './components/ScrollProgress';
 
 function App() {
   return (
-    <div className="app">
-      <ScrollProgress />
-      <Header />
-      <main>
-        <Hero />
-        <ScrollReveal>
-          <About />
-        </ScrollReveal>
-        <Skills />
-        <Experience />
-        <Projects />
-        <ScrollReveal>
-          <Contact />
-        </ScrollReveal>
-      </main>
-      <Footer />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="app">
+        <ScrollProgress />
+        <Header />
+        <main>
+          <Hero />
+          <ScrollReveal>
+            <About />
+          </ScrollReveal>
+          <Skills />
+          <Experience />
+          <Projects />
+          <ScrollReveal>
+            <Contact />
+          </ScrollReveal>
+        </main>
+        <Footer />
+      </div>
+    </MotionConfig>
   );
 }
 

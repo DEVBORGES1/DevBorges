@@ -38,7 +38,7 @@
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--text-primary);
-    font-family: 'Fira Code', monospace;
+    font-family: var(--font-mono);
     letter-spacing: -1px;
     transition: transform 0.3s ease;
     cursor: pointer;
@@ -312,7 +312,7 @@
 
 .typewriter-text {
     min-height: 3rem;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--font-mono);
     letter-spacing: 0.5px;
 }
 
@@ -787,6 +787,30 @@
     transform: scale(1.1);
 }
 
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(5, 5, 5, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-link-overlay {
+    padding: 0.6rem 1.4rem;
+    border: 1px solid var(--text-accent);
+    border-radius: 50px;
+    background: rgba(239, 68, 68, 0.15);
+    color: #fff;
+    font-weight: 600;
+}
+
 .project-info {
     padding: 1.5rem;
     flex: 1;
@@ -885,7 +909,7 @@
 }
 
 .timeline-content {
-    width: 45%;
+    width: calc(100% - 3rem);
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(12px);
     padding: 1.5rem;

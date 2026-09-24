@@ -13,6 +13,7 @@
   --border-hover: rgba(239, 68, 68, 0.5);
 
   --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-mono: 'Fira Code', 'Courier New', monospace;
 
   --transition: all 0.3s ease;
 }
