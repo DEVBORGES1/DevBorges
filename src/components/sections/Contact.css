@@ -96,6 +96,12 @@
     transition: all 0.3s ease;
 }
 
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
@@ -109,7 +115,7 @@
     padding: 1rem;
     margin-top: 1rem;
     cursor: pointer;
-    background: var(--text-accent);
+    background: var(--accent-strong);
     color: #fff;
     border-radius: 50px;
     font-weight: bold;
@@ -154,6 +160,14 @@
 }
 
 @media (max-width: 768px) {
+    .contact {
+        padding: 4rem 1rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
     .contact-container {
         grid-template-columns: 1fr;
         gap: 3rem;

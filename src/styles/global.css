@@ -2,6 +2,8 @@
 
 html {
     scroll-behavior: smooth;
+    /* Evita que o título da seção fique sob o header fixo ao navegar pelo menu */
+    scroll-padding-top: 2.5rem;
 }
 
 * {

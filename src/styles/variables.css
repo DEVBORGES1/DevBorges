@@ -6,6 +6,8 @@
   --text-primary: #ffffff;
   --text-secondary: #a1a1aa;
   --text-accent: #ef4444;
+  /* Vermelho de fundo para botões cheios: texto branco com contraste AA */
+  --accent-strong: #dc2626;
   /* Red accent */
   --text-glow: rgba(239, 68, 68, 0.6);
 

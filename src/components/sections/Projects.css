@@ -124,9 +124,26 @@
 }
 
 .project-link:hover {
-    background: var(--text-accent);
+    background: var(--accent-strong);
     color: #fff;
     border-color: var(--text-accent);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+/* Em telas touch não há hover: o overlay só atrapalharia o primeiro toque */
+@media (hover: none) {
+    .project-overlay {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects {
+        padding: 4rem 1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
 }

@@ -8,6 +8,13 @@
     text-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
 }
 
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+
 /* Tags de tecnologia (Projetos e Experiência) */
 .project-tags {
     display: flex;

@@ -1,42 +1,91 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { useActiveSection } from '../../hooks/useActiveSection';
 import './Header.css';
+
+const navItems = [
+    { name: 'Início', id: 'hero' },
+    { name: 'Sobre', id: 'about' },
+    { name: 'Experiência', id: 'experience' },
+    { name: 'Projetos', id: 'projects' },
+    { name: 'Habilidades', id: 'skills' },
+    { name: 'Contato', id: 'contact' },
+];
+const sectionIds = navItems.map((item) => item.id);
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const activeId = useActiveSection(sectionIds);
+    const headerRef = useRef(null);
+    const menuButtonRef = useRef(null);
 
-    const toggleMenu = () => setIsOpen(!isOpen);
+    const closeMenu = () => setIsOpen(false);
 
-    const navItems = [
-        { name: 'Início', href: '#hero' },
-        { name: 'Sobre', href: '#about' },
-        { name: 'Experiência', href: '#experience' },
-        { name: 'Projetos', href: '#projects' },
-        { name: 'Habilidades', href: '#skills' },
-        { name: 'Contato', href: '#contact' },
-    ];
+    // Com o menu mobile aberto: trava o scroll da página, fecha com Esc,
+    // com toque fora do header ou quando a tela passa para o layout desktop.
+    useEffect(() => {
+        if (!isOpen) return undefined;
+
+        const { overflow } = document.body.style;
+        document.body.style.overflow = 'hidden';
+
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                setIsOpen(false);
+                menuButtonRef.current?.focus();
+            }
+        };
+        const handlePointerDown = (event) => {
+            if (!headerRef.current?.contains(event.target)) setIsOpen(false);
+        };
+        const desktopQuery = window.matchMedia('(min-width: 769px)');
+        const handleViewportChange = (event) => {
+            if (event.matches) setIsOpen(false);
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('pointerdown', handlePointerDown);
+        desktopQuery.addEventListener('change', handleViewportChange);
+
+        return () => {
+            document.body.style.overflow = overflow;
+            document.removeEventListener('keydown', handleKeyDown);
+            document.removeEventListener('pointerdown', handlePointerDown);
+            desktopQuery.removeEventListener('change', handleViewportChange);
+        };
+    }, [isOpen]);
+
+    const renderLinks = (onClick) =>
+        navItems.map(({ name, id }) => {
+            const isActive = activeId === id;
+            return (
+                <li key={id}>
+                    <a
+                        href={`#${id}`}
+                        className={isActive ? 'active' : undefined}
+                        aria-current={isActive ? 'location' : undefined}
+                        onClick={onClick}
+                    >
+                        {name}
+                    </a>
+                </li>
+            );
+        });
 
     return (
-        <header className="header">
-            <nav className="nav-container">
+        <header className="header" ref={headerRef}>
+            <nav className="nav-container" aria-label="Navegação principal">
                 <a href="#hero" className="logo" aria-label="DEVBORGES — voltar ao início">
                     &lt;DEVBORGES/&gt;
                 </a>
 
-                {/* Desktop Navigation */}
-                <ul className="nav-links">
-                    {navItems.map((item) => (
-                        <li key={item.name}>
-                            <a href={item.href}>{item.name}</a>
-                        </li>
-                    ))}
-                </ul>
+                <ul className="nav-links">{renderLinks()}</ul>
 
-                {/* Mobile Menu Button */}
                 <button
+                    ref={menuButtonRef}
                     className="mobile-menu-btn"
-                    onClick={toggleMenu}
+                    onClick={() => setIsOpen((open) => !open)}
                     aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
                     aria-expanded={isOpen}
                     aria-controls="mobile-nav"
@@ -45,30 +94,19 @@ const Header = () => {
                 </button>
             </nav>
 
-            {/* Mobile Navigation Overlay */}
             <AnimatePresence>
                 {isOpen && (
-                    <motion.div
+                    <motion.nav
                         id="mobile-nav"
                         className="mobile-nav"
+                        aria-label="Navegação principal"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <ul className="mobile-nav-links">
-                            {navItems.map((item) => (
-                                <li key={item.name}>
-                                    <a
-                                        href={item.href}
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        {item.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </motion.div>
+                        <ul className="mobile-nav-links">{renderLinks(closeMenu)}</ul>
+                    </motion.nav>
                 )}
             </AnimatePresence>
         </header>
