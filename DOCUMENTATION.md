@@ -29,8 +29,10 @@ Para as animações, não usei CSS puro para tudo porque queria um controle maio
 
 ##  Deploy
 
-O deploy é automatizado via **GitHub Pages**.
-O script `npm run deploy` faz o build da aplicação (gera a pasta `dist` otimizada) e empurra essa pasta para uma branch especial chamada `gh-pages`, que o GitHub usa para servir o site.
+O deploy é feito na **Vercel**, integrada ao repositório do GitHub.
+A cada push na branch principal, a Vercel roda `npm run build` e publica a pasta `dist` (configuração em `vercel.json`).
+
+As variáveis do formulário de contato (`VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID` e `VITE_EMAILJS_PUBLIC_KEY`) precisam estar cadastradas em *Project Settings → Environment Variables* na Vercel, e em um arquivo `.env` local para desenvolvimento.
 
 ##  Manutenção
 

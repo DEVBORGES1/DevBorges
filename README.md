@@ -30,8 +30,8 @@ Se quiser baixar o código e ver como funciona na sua máquina:
 
 1.  **Clone o repo:**
     ```bash
-    git clone https://github.com/DEVBORGES1/devborges1.github.io.git
-    cd Portfolio
+    git clone https://github.com/DEVBORGES1/DevBorges.git
+    cd DevBorges
     ```
 
 2.  **Instale as dependências:**
