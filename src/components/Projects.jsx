@@ -25,6 +25,7 @@ const Projects = () => {
             title: 'LinkThree',
             description: 'Se trata de um conjunto de sites, Landing Page, Site do escritório, Portfolio e um site de mentoria que foi feito para minha cliente.',
             link: 'https://github.com/DEVBORGES1/LINKTHREE',
+            demo: 'https://nathiaraborgesadv.vercel.app/',
             image: linkthreeImg,
             tech: ['JavaScript', 'Node.js', 'CSS']
         },
@@ -85,9 +86,16 @@ const Projects = () => {
                                             ))}
                                         </div>
                                         <p>{project.description}</p>
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
-                                            Ver no GitHub &rarr;
-                                        </a>
+                                        <div className="project-links">
+                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
+                                                Ver no GitHub &rarr;
+                                            </a>
+                                            {project.demo && (
+                                                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link">
+                                                    Ver site &rarr;
+                                                </a>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </Tilt>

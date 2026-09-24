@@ -850,8 +850,13 @@
     line-height: 1.6;
 }
 
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
 .project-link {
-    align-self: flex-start;
     padding: 0.6rem 1.2rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-color);
