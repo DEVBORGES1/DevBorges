@@ -1,43 +1,8 @@
 import StaggeredReveal, { RevealItem } from './StaggeredReveal';
 import { Tilt } from 'react-tilt';
-import rcpImg from '../assets/projects/rcp.webp';
-import expenseImg from '../assets/projects/expense-control.webp';
-import linkthreeImg from '../assets/projects/linkthree.webp';
-import videoImg from '../assets/projects/video-analyzer.webp';
+import { projects } from '../data/projects';
 
 const Projects = () => {
-    const projects = [
-        {
-            title: 'RCP Sistema de Concursos',
-            description: 'Sistema gamificado completo para pessoas que estão se preparando para concursos públicos, organizando e te trazendo uma melhor forma de estudo.',
-            link: 'https://github.com/DEVBORGES1/RCP-Sistema-De-Concursos',
-            image: rcpImg,
-            tech: ['PHP', 'MySQL', 'Bootstrap']
-        },
-        {
-            title: 'Expense Control',
-            description: 'Aplicação gamificada para controle de gastos para pessoas compulsivas.',
-            link: 'https://github.com/DEVBORGES1/Expense-Control',
-            image: expenseImg,
-            tech: ['Python', 'Django', 'n8n Agent']
-        },
-        {
-            title: 'LinkThree',
-            description: 'Se trata de um conjunto de sites, Landing Page, Site do escritório, Portfolio e um site de mentoria que foi feito para minha cliente.',
-            link: 'https://github.com/DEVBORGES1/LINKTHREE',
-            demo: 'https://nathiaraborgesadv.vercel.app/',
-            image: linkthreeImg,
-            tech: ['JavaScript', 'Node.js', 'CSS']
-        },
-        {
-            title: 'Video Analyzer',
-            description: 'Ferramenta que tem como objetivo analisar vídeos, transformar em mp3 e usando uma IA para transcrever o vídeo e transformar em um roteiro.',
-            link: 'https://github.com/DEVBORGES1/Video-analyzer',
-            image: videoImg,
-            tech: ['Python', 'AI', 'OpenCV']
-        },
-    ];
-
     const defaultOptions = {
         reverse: false,
         max: 15,
@@ -57,14 +22,14 @@ const Projects = () => {
             <h2>Meus Projetos</h2>
             <StaggeredReveal>
                 <div className="projects-grid">
-                    {projects.map((project, index) => (
-                        <RevealItem key={index} className="reveal-item-wrapper">
+                    {projects.map((project) => (
+                        <RevealItem key={project.title} className="reveal-item-wrapper">
                             <Tilt options={defaultOptions} className="tilt-card-wrapper">
                                 <div className="project-card">
                                     <div className="project-image-container">
                                         <img
                                             src={project.image}
-                                            alt={project.title}
+                                            alt={project.imageAlt}
                                             className="project-image"
                                             width="800"
                                             height="420"
@@ -73,7 +38,7 @@ const Projects = () => {
                                         />
                                         {/* Atalho visual no hover; fora da ordem do Tab porque duplica o link "Ver no GitHub" abaixo */}
                                         <div className="project-overlay" aria-hidden="true">
-                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link-overlay" tabIndex={-1}>
+                                            <a href={project.repo} target="_blank" rel="noopener noreferrer" className="project-link-overlay" tabIndex={-1}>
                                                 Ver Projeto
                                             </a>
                                         </div>
@@ -81,13 +46,13 @@ const Projects = () => {
                                     <div className="project-info">
                                         <h3>{project.title}</h3>
                                         <div className="project-tags">
-                                            {project.tech.map((t, i) => (
-                                                <span key={i} className="tech-tag">{t}</span>
+                                            {project.tech.map((t) => (
+                                                <span key={t} className="tech-tag">{t}</span>
                                             ))}
                                         </div>
                                         <p>{project.description}</p>
                                         <div className="project-links">
-                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
+                                            <a href={project.repo} target="_blank" rel="noopener noreferrer" className="project-link">
                                                 Ver no GitHub &rarr;
                                             </a>
                                             {project.demo && (

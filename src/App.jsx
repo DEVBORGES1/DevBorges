@@ -22,9 +22,9 @@ function App() {
           <ScrollReveal>
             <About />
           </ScrollReveal>
-          <Skills />
           <Experience />
           <Projects />
+          <Skills />
           <ScrollReveal>
             <Contact />
           </ScrollReveal>

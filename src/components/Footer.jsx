@@ -1,25 +1,29 @@
-import { FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { profile, socials } from '../data/profile';
+
+const footerLinks = [
+    { href: socials.github, label: 'GitHub', icon: FaGithub },
+    { href: socials.linkedin, label: 'LinkedIn', icon: FaLinkedin },
+    { href: socials.whatsapp, label: 'WhatsApp', icon: FaWhatsapp },
+    { href: socials.instagram, label: 'Instagram', icon: FaInstagram },
+];
 
 const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer-socials">
-                <a href="https://www.instagram.com/itsjvborges/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
-                    <FaInstagram />
-                </a>
-                <a href="https://www.linkedin.com/in/joão-vitor-53875a1a1" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
-                    <FaLinkedin />
-                </a>
-                <a href="https://wa.me/5549999685965" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="WhatsApp">
-                    <FaWhatsapp />
-                </a>
+                {footerLinks.map(({ href, label, icon: Icon }) => (
+                    <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={label}>
+                        <Icon />
+                    </a>
+                ))}
             </div>
 
             <div className="footer-status">
                 <div className="status-dot"></div>
-                <span>Disponível para projetos</span>
+                <span>Aberto a novas oportunidades</span>
             </div>
-            <p>&copy; {new Date().getFullYear()} João Vitor Pereira (Borges). Todos os direitos reservados.</p>
+            <p>&copy; {new Date().getFullYear()} {profile.name} ({profile.brand}). Todos os direitos reservados.</p>
         </footer>
     );
 };

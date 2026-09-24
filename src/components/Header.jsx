@@ -10,18 +10,18 @@ const Header = () => {
     const navItems = [
         { name: 'Início', href: '#hero' },
         { name: 'Sobre', href: '#about' },
-        { name: 'Habilidade e Tecnologias', href: '#skills' },
-        { name: 'Jornada', href: '#experience' },
+        { name: 'Experiência', href: '#experience' },
         { name: 'Projetos', href: '#projects' },
+        { name: 'Habilidades', href: '#skills' },
         { name: 'Contato', href: '#contact' },
     ];
 
     return (
         <header className="header">
             <nav className="nav-container">
-                <div className="logo">
+                <a href="#hero" className="logo" aria-label="DEVBORGES — voltar ao início">
                     &lt;DEVBORGES/&gt;
-                </div>
+                </a>
 
                 {/* Desktop Navigation */}
                 <ul className="nav-links">
@@ -33,7 +33,13 @@ const Header = () => {
                 </ul>
 
                 {/* Mobile Menu Button */}
-                <button className="mobile-menu-btn" onClick={toggleMenu} aria-label="Toggle Menu">
+                <button
+                    className="mobile-menu-btn"
+                    onClick={toggleMenu}
+                    aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
+                    aria-expanded={isOpen}
+                    aria-controls="mobile-nav"
+                >
                     {isOpen ? <FaTimes /> : <FaBars />}
                 </button>
             </nav>
@@ -42,6 +48,7 @@ const Header = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
+                        id="mobile-nav"
                         className="mobile-nav"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}

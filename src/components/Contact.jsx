@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
+import { socials } from '../data/profile';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -47,20 +48,20 @@ const Contact = () => {
             <h2>Contato</h2>
             <div className="contact-container">
                 <div className="contact-info">
-                    <h3>Vamos construir algo incrível juntos?</h3>
-                    <p>Estou sempre aberto a novas oportunidades e parcerias. Sinta-se à vontade para me mandar uma mensagem!</p>
+                    <h3>Vamos conversar?</h3>
+                    <p>Estou aberto a vagas de Software Engineer (backend ou full stack) e a projetos freelance. Me chame pelo formulário, e-mail ou LinkedIn.</p>
 
                     <div className="contact-socials">
-                        <a href="https://github.com/DEVBORGES1" target="_blank" rel="noopener noreferrer" className="social-btn github">
+                        <a href={socials.github} target="_blank" rel="noopener noreferrer" className="social-btn github">
                             <FaGithub /> <span>GitHub</span>
                         </a>
-                        <a href="https://www.linkedin.com/in/joão-vitor-53875a1a1" target="_blank" rel="noopener noreferrer" className="social-btn linkedin">
+                        <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="social-btn linkedin">
                             <FaLinkedin /> <span>LinkedIn</span>
                         </a>
-                        <a href="https://wa.me/5549999685965" target="_blank" rel="noopener noreferrer" className="social-btn whatsapp">
+                        <a href={socials.whatsapp} target="_blank" rel="noopener noreferrer" className="social-btn whatsapp">
                             <FaWhatsapp /> <span>WhatsApp</span>
                         </a>
-                        <a href="mailto:joaovitorpereira.10112@gmail.com" className="social-btn email">
+                        <a href={socials.email} className="social-btn email">
                             <FaEnvelope /> <span>Email</span>
                         </a>
                     </div>

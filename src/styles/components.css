@@ -89,6 +89,8 @@
 /* Mobile Menu Styles */
 .mobile-menu-btn {
     display: none;
+    min-width: 44px;
+    min-height: 44px;
     background: none;
     border: none;
     color: var(--text-primary);
@@ -213,6 +215,30 @@
     color: var(--text-secondary);
 }
 
+.hero-greeting {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.hero-text .typewriter-text {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.hero-text .hero-summary {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
 /* Cartoon Image Styles */
 .hero-image-container {
     flex: 1;
@@ -294,7 +320,9 @@
 }
 
 .cta-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 1rem 2rem;
     background: var(--text-accent);
     color: #fff;
@@ -310,8 +338,20 @@
     box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
 }
 
+.cta-button.secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    box-shadow: none;
+}
+
+.cta-button.secondary:hover {
+    border-color: var(--text-accent);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
 .typewriter-text {
-    min-height: 3rem;
+    min-height: 1.8em;
     font-family: var(--font-mono);
     letter-spacing: 0.5px;
 }
@@ -398,6 +438,14 @@
 
     .hero-text p {
         margin: 0 auto 2rem;
+    }
+
+    .hero-text .typewriter-text {
+        margin-bottom: 1rem;
+    }
+
+    .hero-actions {
+        justify-content: center;
     }
 
     .hero-text h1 {
@@ -523,6 +571,18 @@
     color: #fff;
 }
 
+.premium-btn.resume {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--text-primary);
+}
+
+.premium-btn.resume:hover {
+    border-color: var(--text-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
 .premium-btn .btn-icon {
     font-size: 1.2rem;
 }
@@ -553,7 +613,7 @@
 }
 
 .stat-number {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 800;
     background: linear-gradient(to right, #fff, var(--text-secondary));
     -webkit-background-clip: text;
@@ -724,6 +784,26 @@
     font-size: 0.8rem;
     color: var(--text-secondary);
     align-self: flex-end;
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .skill-card {
+        padding: 1.25rem 0.75rem;
+    }
+
+    .icon-wrapper {
+        width: 56px;
+        height: 56px;
+    }
+
+    .skill-card h3 {
+        font-size: 0.95rem;
+    }
 }
 
 /* Projects Section */
@@ -992,15 +1072,51 @@
     line-height: 1.6;
 }
 
+.timeline-content .timeline-org {
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+
+.timeline-org a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--text-accent);
+    text-underline-offset: 3px;
+}
+
+.timeline-highlights {
+    list-style: disc;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.timeline-highlights li::marker {
+    color: var(--text-accent);
+}
+
 @media (max-width: 768px) {
+    .experience {
+        padding: 4rem 1rem;
+    }
+
     .timeline-line {
-        left: 30px;
+        left: 18px;
     }
 
     .timeline-item {
         justify-content: flex-start !important;
-        padding-left: 80px !important;
+        padding-left: 48px !important;
         padding-right: 0 !important;
+        margin-bottom: 2.5rem;
+    }
+
+    .timeline-content {
+        padding: 1.25rem;
     }
 
     .timeline-item.left .timeline-content,
@@ -1010,9 +1126,9 @@
     }
 
     .timeline-icon {
-        left: 30px;
-        width: 40px;
-        height: 40px;
+        left: 18px;
+        width: 36px;
+        height: 36px;
         font-size: 1rem;
     }
 }
@@ -1218,6 +1334,8 @@
 }
 
 .social-icon {
+    min-width: 44px;
+    min-height: 44px;
     font-size: 1.8rem;
     color: var(--text-secondary);
     transition: var(--transition);

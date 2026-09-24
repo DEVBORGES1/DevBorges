@@ -36,8 +36,11 @@ As variáveis do formulário de contato (`VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJ
 
 ##  Manutenção
 
-Se precisar adicionar um novo projeto:
-1.  Vá em `src/components/Projects.jsx`.
-2.  Adicione um novo objeto na lista `projects`.
-3.  Coloque a imagem do projeto na pasta `assets` e importe ela.
-4.  Pronto! O resto o código resolve sozinho.
+Todo o conteúdo fica em `src/data/`, separado dos componentes:
+
+*   `profile.js`: nome, cargo, resumo, currículo e links sociais (usados no Hero, Sobre, Contato e Rodapé).
+*   `experience.js`: itens da seção Experiência.
+*   `projects.js`: cards de projetos (imagem, descrição, tecnologias, repositório e demo opcional).
+*   `skills.js`: habilidades e categorias do filtro.
+
+Para adicionar um projeto, coloque a imagem (WebP, ~800px de largura) em `src/assets/projects/`, importe em `projects.js` e adicione um objeto na lista.

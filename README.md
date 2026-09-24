@@ -4,7 +4,9 @@ Bem-vindo ao meu espaço na web! Aqui é onde eu mostro um pouco do que eu sei f
 
 ## Sobre Mim
 
-Sou o João Vitor, um apaixonado por tecnologia. Gosto de pegar problemas complexos e transformar em soluções simples e bonitas. Meu foco principal hoje é **JavaScript, React e Node.js**, mas estou sempre explorando coisas novas como IA e Cyber Security.
+Sou o João Vitor Pereira (DEVBORGES), Software Engineer com foco em backend e estudante de Ciência da Computação na Unoesc. Trabalhei como Software Engineer Jr na Nexus Labz, onde levei um app React Native do zero à produção (JWT, OAuth, pagamentos, Nginx e CI/CD), e desenvolvo projetos para clientes e próprios com TypeScript, Node.js, PHP/Laravel, Python e C#/.NET.
+
+🔗 **Portfólio no ar:** [devborges.vercel.app](https://devborges.vercel.app/)
 
 ##  O que tem debaixo do capô?
 
@@ -17,12 +19,12 @@ Esse site não foi feito com templates prontos. Foi construído linha a linha pe
 
 ##  Projetos em Destaque
 
-Na seção de projetos você vai encontrar algumas das coisas que andei codando:
+*   **RCP — Sistema de Concursos:** plataforma SaaS com simulados, rotina de estudos e dashboard de desempenho (PHP, Laravel, MySQL).
+*   **Plataforma Jurídica — Dra. Nathiara Borges:** projeto para cliente com foco em acessibilidade ([ver site](https://nathiaraborgesadv.vercel.app/)).
+*   **Expense Control:** app desktop em Python para finanças pessoais com gamificação.
+*   **Video Analyzer:** extração de áudio, transcrição com IA e geração de roteiro em Python.
 
-*   **RCP Sistema de Concursos:** Um sistema parrudo para quem estuda para concursos, com gamificação.
-*   **Expense Control:** Controle financeiro, mas com um toque gamificado para ajudar quem tem dificuldade em economizar.
-*   **LinkThree:** Um hub central para links, portfólio e mentoria.
-*   **Video Analyzer:** Uma brincadeira séria com IA e processamento de vídeo.
+O conteúdo do site (experiência, projetos, habilidades e links) fica em `src/data/`.
 
 ##  Rodando no seu PC
 

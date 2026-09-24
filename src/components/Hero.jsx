@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { FaChevronDown } from 'react-icons/fa';
+import { FaChevronDown, FaFileDownload } from 'react-icons/fa';
 
 import cartoonImage from '../assets/projects/cartoon.webp';
+import { profile } from '../data/profile';
 
-const fullText = "Desenvolvedor Full Stack Especializado em desenvolver soluções web modernas.";
+const fullText = profile.role;
 
 // Gerado uma única vez: se ficasse no render, cada tick do typewriter
 // sortearia novas posições/durações e as partículas "pulariam".
@@ -44,7 +45,8 @@ const Hero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        Olá, eu sou o <span className="highlight">Borges</span>
+                        <span className="hero-greeting">Olá, eu sou</span>{' '}
+                        João Vitor <span className="highlight">Pereira</span>
                     </motion.h1>
 
                     <motion.p
@@ -59,12 +61,25 @@ const Hero = () => {
                         </span>
                     </motion.p>
 
+                    <motion.p
+                        className="hero-summary"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.45 }}
+                    >
+                        {profile.summary}
+                    </motion.p>
+
                     <motion.div
+                        className="hero-actions"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
                     >
                         <a href="#projects" className="cta-button">Ver Projetos</a>
+                        <a href={profile.resume} className="cta-button secondary" download>
+                            <FaFileDownload aria-hidden="true" /> Baixar Currículo
+                        </a>
                     </motion.div>
                 </div>
 
@@ -91,7 +106,7 @@ const Hero = () => {
                     </div>
                     <img
                         src={cartoonImage}
-                        alt="Avatar ilustrado de João Vitor Borges"
+                        alt={`Avatar ilustrado de ${profile.name}`}
                         className="hero-cartoon"
                         width="730"
                         height="1000"
@@ -100,7 +115,7 @@ const Hero = () => {
                 </motion.div>
             </div>
 
-            <a href="#about" className="scroll-indicator" aria-label="Scroll Down">
+            <a href="#about" className="scroll-indicator" aria-label="Ir para a seção Sobre">
                 <FaChevronDown />
             </a>
         </section>

@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaFileDownload } from 'react-icons/fa';
+import { profile, socials } from '../data/profile';
+
+const stats = [
+    { number: '8 meses', label: 'como Software Engineer na Nexus Labz', delay: 0.2 },
+    { number: '2 apps', label: 'mobile em React Native entregues do início ao fim', delay: 0.3 },
+    { number: 'Dez/2027', label: 'conclusão em Ciência da Computação (Unoesc)', delay: 0.4 },
+];
 
 const About = () => {
-    const stats = [
-        { number: '1+', label: 'Ano de Experiência', delay: 0.2 },
-        { number: '10+', label: 'Projetos Entregues', delay: 0.3 },
-        { number: '5+', label: 'Tecnologias Dominadas', delay: 0.4 },
-    ];
-
     return (
         <section id="about" className="about">
             <h2>Sobre Mim</h2>
@@ -20,42 +21,40 @@ const About = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h3>Developer Full Stack</h3>
+                    <h3>Software Engineer</h3>
                     <p>
-                        Sou um desenvolvedor apaixonado por criar soluções robustas e escaláveis.
-                        Com foco em <strong>JavaScript, React, Node.js e Ecossistema Web</strong>,
-                        transformo ideias complexas em interfaces elegantes e funcionais.
+                        Sou Software Engineer e estudante de Ciência da Computação. Na <strong>Nexus Labz</strong>,
+                        levei um app React Native do zero à produção: arquitetura, autenticação com JWT e OAuth,
+                        pagamentos, servidor com Nginx e pipeline de deploy no GitHub Actions.
                     </p>
                     <p>
-                        Atualmente, estou me aprofundando em arquitetura de software,
-                        segurança cibernética e automação com IA. Meu objetivo é construir
-                        sistemas que não apenas funcionem, mas que ofereçam uma experiência
-                        excepcional ao usuário.
+                        Também desenvolvo sistemas completos para clientes e projetos próprios, com
+                        <strong> TypeScript, Node.js, PHP/Laravel, Python e C#/.NET</strong> e bancos como
+                        PostgreSQL, MySQL e SQL Server. Meu foco é backend: modelagem de dados, regras de
+                        negócio, integrações e infraestrutura.
                     </p>
 
                     <div className="about-actions">
-                        <a href="https://github.com/DEVBORGES1" target="_blank" rel="noopener noreferrer" className="premium-btn github">
-                            <FaGithub className="btn-icon" />
+                        <a href={socials.github} target="_blank" rel="noopener noreferrer" className="premium-btn github">
+                            <FaGithub className="btn-icon" aria-hidden="true" />
                             <span>GitHub</span>
                         </a>
-                        <a href="https://www.linkedin.com/in/joão-vitor-53875a1a1" target="_blank" rel="noopener noreferrer" className="premium-btn linkedin">
-                            <FaLinkedin className="btn-icon" />
+                        <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="premium-btn linkedin">
+                            <FaLinkedin className="btn-icon" aria-hidden="true" />
                             <span>LinkedIn</span>
                         </a>
-                        {/* 
-                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="premium-btn resume">
-                            <FaFileDownload className="btn-icon" />
+                        <a href={profile.resume} className="premium-btn resume" download>
+                            <FaFileDownload className="btn-icon" aria-hidden="true" />
                             <span>Currículo</span>
                         </a>
-                        */}
                     </div>
                 </motion.div>
 
                 <div className="about-stats-column">
                     <div className="stats-grid">
-                        {stats.map((stat, index) => (
+                        {stats.map((stat) => (
                             <motion.div
-                                key={index}
+                                key={stat.number}
                                 className="stat-card"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
