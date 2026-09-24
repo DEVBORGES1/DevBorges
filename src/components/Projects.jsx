@@ -1,4 +1,3 @@
-import React from 'react';
 import StaggeredReveal, { RevealItem } from './StaggeredReveal';
 import { Tilt } from 'react-tilt';
 import rcpImg from '../assets/projects/RCP1.png';

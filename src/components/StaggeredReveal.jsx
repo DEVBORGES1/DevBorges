@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const StaggeredReveal = ({ children, staggerDelay = 0.2 }) => {
