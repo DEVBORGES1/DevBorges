@@ -93,3 +93,32 @@ button {
         display: none;
     }
 }
+
+/* Troca de tema: o novo tema surge num círculo de borda suave que cresce a partir do botão.
+   --reveal-x/--reveal-y são definidos em setTheme (src/theme/useTheme.js). */
+@property --reveal-size {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0px;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+    mask-image: radial-gradient(circle closest-side, #000 92%, transparent 100%);
+    mask-repeat: no-repeat;
+    mask-size: var(--reveal-size) var(--reveal-size);
+    mask-position: calc(var(--reveal-x, 50vw) - var(--reveal-size) / 2) calc(var(--reveal-y, 50vh) - var(--reveal-size) / 2);
+    animation: theme-reveal 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes theme-reveal {
+    to {
+        --reveal-size: 300vmax;
+    }
+}
+
