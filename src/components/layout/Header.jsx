@@ -4,6 +4,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { useActiveSection } from '../../hooks/useActiveSection';
 import { useLocale } from '../../i18n/context';
 import { routes, otherLocale } from '../../i18n/routes';
+import ThemeToggle from './ThemeToggle';
 import './Header.css';
 
 const sectionIds = ['hero', 'about', 'experience', 'projects', 'skills', 'contact'];
@@ -90,6 +91,8 @@ const Header = ({ page }) => {
                 </a>
 
                 <ul className="nav-links">{renderLinks()}</ul>
+
+                <ThemeToggle />
 
                 <a
                     href={routes[page][alternate]}

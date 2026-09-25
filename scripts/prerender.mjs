@@ -2,17 +2,10 @@
 // Roda depois de `vite build` (cliente) e `vite build --ssr` (servidor).
 import { readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pages } from './pages.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = `${root}dist`;
-
-// Nome da página em src/entry-server.jsx -> HTML gerado pelo Vite
-const pages = [
-    { name: 'home', html: 'index.html' },
-    { name: 'nexus', html: 'cases/nexus/index.html' },
-    { name: 'home-en', html: 'en/index.html' },
-    { name: 'nexus-en', html: 'en/cases/nexus/index.html' },
-];
 
 const { render } = await import(pathToFileURL(`${root}dist-ssr/entry-server.js`).href);
 

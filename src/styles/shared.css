@@ -59,7 +59,7 @@
 }
 
 .cta-button.secondary {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--tint-05);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
     box-shadow: none;
@@ -68,4 +68,32 @@
 .cta-button.secondary:hover {
     border-color: var(--text-accent);
     box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+/* Botões de filtro (Habilidades e página de projetos) */
+.tab-btn {
+    padding: 0.8rem 1.5rem;
+    background: var(--tint-03);
+    border: 1px solid var(--tint-10);
+    color: var(--text-secondary);
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition-property: var(--transition-props);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+
+.tab-btn:hover {
+    background: var(--tint-08);
+    transform: translateY(-2px);
+    color: var(--text-primary);
+}
+
+.tab-btn.active {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: var(--text-accent);
+    color: var(--text-accent);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
 }

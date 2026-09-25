@@ -1,7 +1,19 @@
+/* Tema escuro (padrão). O tema claro sobrescreve os tokens em [data-theme='light'];
+   a escolha fica salva no navegador e é aplicada por public/theme-init.js antes da pintura. */
 :root {
+  color-scheme: dark;
+
   --bg-primary: #050505;
   --bg-secondary: #0a0a0a;
   --bg-card: rgba(255, 255, 255, 0.03);
+
+  /* Camadas translúcidas sobre o fundo (brancas no escuro, pretas no claro) */
+  --tint-02: rgba(255, 255, 255, 0.02);
+  --tint-03: rgba(255, 255, 255, 0.03);
+  --tint-05: rgba(255, 255, 255, 0.05);
+  --tint-06: rgba(255, 255, 255, 0.06);
+  --tint-08: rgba(255, 255, 255, 0.08);
+  --tint-10: rgba(255, 255, 255, 0.1);
 
   --text-primary: #ffffff;
   --text-secondary: #a1a1aa;
@@ -14,6 +26,22 @@
   --border-color: rgba(255, 255, 255, 0.1);
   --border-hover: rgba(239, 68, 68, 0.5);
 
+  /* Superfícies do header, menu e formulário */
+  --header-bg: rgba(5, 5, 5, 0.8);
+  --pill-bg: rgba(10, 10, 10, 0.75);
+  --menu-bg: rgba(10, 10, 10, 0.95);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --surface-glass: rgba(25, 25, 25, 0.4);
+  --input-bg: rgba(0, 0, 0, 0.2);
+  --input-bg-focus: rgba(0, 0, 0, 0.4);
+
+  /* Cores de estado e de marca com contraste AA sobre o fundo de cada tema */
+  --success: #4ade80;
+  --error: #f87171;
+  --linkedin-text: #3aa0dc;
+  /* Faixa de áreas: discreta, mas com 3:1 exigido para texto grande */
+  --marquee-text: #6b6b75;
+
   --font-family: 'Inter Variable', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-mono: 'Fira Code Variable', 'Fira Code', 'Courier New', monospace;
   /* Fonte de títulos (h1, títulos de seção, faixa e CTA) */
@@ -21,4 +49,42 @@
 
   /* Só propriedades baratas de animar (sem `all`, que inclui propriedades de layout) */
   --transition-props: color, background-color, border-color, box-shadow, transform, filter, opacity;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg-primary: #fafafa;
+  --bg-secondary: #f4f4f5;
+  --bg-card: rgba(0, 0, 0, 0.03);
+
+  --tint-02: rgba(0, 0, 0, 0.02);
+  --tint-03: rgba(0, 0, 0, 0.03);
+  --tint-05: rgba(0, 0, 0, 0.05);
+  --tint-06: rgba(0, 0, 0, 0.06);
+  --tint-08: rgba(0, 0, 0, 0.08);
+  --tint-10: rgba(0, 0, 0, 0.1);
+
+  --text-primary: #0a0a0a;
+  --text-secondary: #52525b;
+  /* Vermelho mais escuro no texto: contraste AA também sobre as áreas tingidas de vermelho */
+  --text-accent: #b91c1c;
+  --accent-strong: #dc2626;
+  --text-glow: rgba(220, 38, 38, 0.35);
+
+  --border-color: rgba(0, 0, 0, 0.1);
+  --border-hover: rgba(220, 38, 38, 0.5);
+
+  --header-bg: rgba(250, 250, 250, 0.8);
+  --pill-bg: rgba(255, 255, 255, 0.8);
+  --menu-bg: rgba(255, 255, 255, 0.97);
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --surface-glass: rgba(255, 255, 255, 0.6);
+  --input-bg: #ffffff;
+  --input-bg-focus: #ffffff;
+
+  --success: #15803d;
+  --error: #b91c1c;
+  --linkedin-text: #0a66c2;
+  --marquee-text: #85858e;
 }

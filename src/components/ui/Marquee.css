@@ -35,7 +35,7 @@
     line-height: 1.2;
     white-space: nowrap;
     /* Cinza discreto, mas com contraste 3:1 exigido para texto grande */
-    color: #6b6b75;
+    color: var(--marquee-text);
     transition: color 0.3s ease;
 }
 

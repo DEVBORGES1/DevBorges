@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { fileURLToPath } from 'node:url'
+import { pages } from './scripts/pages.mjs'
 
 const page = (path) => fileURLToPath(new URL(path, import.meta.url))
 
@@ -12,12 +13,8 @@ export default defineConfig({
     outDir: 'dist',
     // Multi-página: cada entrada gera seu próprio HTML (com meta tags próprias)
     rollupOptions: {
-      input: {
-        main: page('./index.html'),
-        nexus: page('./cases/nexus/index.html'),
-        homeEn: page('./en/index.html'),
-        nexusEn: page('./en/cases/nexus/index.html'),
-      },
+      // Lista de páginas em scripts/pages.mjs
+      input: Object.fromEntries(pages.map(({ name, html }) => [name, page(`./${html}`)])),
     },
   },
 })

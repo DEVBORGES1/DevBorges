@@ -101,12 +101,92 @@ test.describe('navegação', () => {
 });
 
 test.describe('projetos', () => {
-    test('projeto de cliente sem repositório público mostra aviso em vez do GitHub', async ({ page }) => {
+    test('home mostra os destaques e leva à lista completa', async ({ page }) => {
         await page.goto('/');
-        const card = page.locator('.project-card', { hasText: 'App Vitale' });
-        await expect(card).toContainText('Projeto para cliente · código privado');
-        await expect(card.getByRole('link', { name: /Ver no GitHub/ })).toHaveCount(0);
-        await expect(card.locator('img')).toHaveAttribute('alt', /Mockups do App Vitale/);
+        await expect(page.locator('#projects .project-card')).toHaveCount(3);
+        await page.getByRole('link', { name: /Ver todos os projetos/ }).click();
+        await expect(page).toHaveURL(/\/projects\/$/);
+        await expect(page.getByRole('heading', { level: 1 })).toHaveText('Todos os projetos');
+        await expect(page.locator('.project-card')).toHaveCount(5);
+    });
+
+    test('filtro da página de projetos mostra só a categoria escolhida', async ({ page }) => {
+        await page.goto('/projects/');
+        const tab = page.getByRole('button', { name: 'Mobile' });
+        await tab.click();
+        await expect(tab).toHaveAttribute('aria-pressed', 'true');
+        await expect(page.locator('.project-card h3')).toHaveText(['App Vitale — Gestão de Pilates']);
+    });
+
+    test('card leva à página do projeto, com anterior e próximo', async ({ page }) => {
+        await page.goto('/projects/');
+        await page.getByRole('link', { name: /RCP — Sistema de Concursos/ }).click();
+        await expect(page).toHaveURL(/\/projects\/rcp\/$/);
+        await expect(page.getByRole('heading', { level: 1 })).toHaveText('RCP — Sistema de Concursos');
+        await expect(page.getByRole('link', { name: /Ver no GitHub/ })).toHaveAttribute('href', /RCP-Sistema-De-Concursos/);
+
+        await page.getByRole('link', { name: /Projeto anterior/ }).click();
+        await expect(page).toHaveURL(/\/projects\/vitale\/$/);
+        await expect(page.getByRole('link', { name: /Próximo projeto/ })).toHaveAttribute('href', '/projects/rcp/');
+    });
+
+    test('projeto de cliente sem repositório público mostra aviso em vez do GitHub', async ({ page }) => {
+        await page.goto('/projects/vitale/');
+        await expect(page.locator('.project-page-header')).toContainText('Projeto para cliente · código privado');
+        await expect(page.getByRole('link', { name: /Ver no GitHub/ })).toHaveCount(0);
+        await expect(page.locator('.project-page img')).toHaveAttribute('alt', /Mockups do App Vitale/);
+    });
+
+    test('HTML pré-renderizado com SEO próprio', async ({ request }) => {
+        const html = await (await request.get('/en/projects/rcp/')).text();
+        expect(html).toContain('<html lang="en" data-project="rcp">');
+        expect(html).toContain('<link rel="canonical" href="https://devborges.vercel.app/en/projects/rcp/" />');
+        expect(html).toMatch(/<h1[^>]*>RCP — Exam Prep Platform/);
+    });
+
+    for (const path of ['/projects/', '/projects/nathiara/', '/en/projects/video/']) {
+        test(`${path} sem erros de console e sem violações WCAG A/AA`, async ({ page }) => {
+            const problems = [];
+            page.on('console', (msg) => msg.type() === 'error' && problems.push(msg.text()));
+            page.on('pageerror', (err) => problems.push(err.message));
+            await page.goto(path);
+            await page.waitForLoadState('networkidle');
+            expect(problems).toEqual([]);
+
+            const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze();
+            expect(results.violations.map((v) => `${v.id}: ${v.nodes.length} elemento(s)`)).toEqual([]);
+        });
+    }
+});
+
+test.describe('tema', () => {
+    test('botão troca para o tema claro e a escolha persiste', async ({ page }) => {
+        await page.goto('/');
+        await page.getByRole('button', { name: 'Ativar tema claro' }).click();
+        await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+        await expect(page.getByRole('button', { name: 'Ativar tema escuro' })).toBeVisible();
+
+        await page.goto('/projects/');
+        await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+        await page.getByRole('button', { name: 'Ativar tema escuro' }).click();
+        await expect(page.locator('html')).not.toHaveAttribute('data-theme', 'light');
+    });
+
+    test('tema claro sem violações WCAG A/AA', async ({ page }) => {
+        await page.addInitScript(() => localStorage.setItem('theme', 'light'));
+        await page.emulateMedia({ reducedMotion: 'reduce' });
+        for (const path of ['/', '/projects/rcp/', '/cases/nexus/']) {
+            await page.goto(path);
+            await page.evaluate(async () => {
+                for (let y = 0; y < document.body.scrollHeight; y += 400) {
+                    window.scrollTo(0, y);
+                    await new Promise((r) => setTimeout(r, 50));
+                }
+            });
+            await page.waitForTimeout(800);
+            const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze();
+            expect(results.violations.map((v) => `${path} ${v.id}: ${v.nodes.length} elemento(s)`)).toEqual([]);
+        }
     });
 });
 

@@ -5,11 +5,11 @@
     left: 0;
     width: 100%;
     padding: 1.5rem 2rem;
-    background: rgba(5, 5, 5, 0.8);
+    background: var(--header-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--tint-05);
     transition: padding 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -36,11 +36,11 @@
 .header.is-scrolled .nav-container {
     max-width: 960px;
     padding: 0.35rem 0.5rem 0.35rem 1.5rem;
-    background: rgba(10, 10, 10, 0.75);
+    background: var(--pill-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-color: var(--border-color);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px var(--shadow-color);
 }
 
 .header.is-scrolled .logo {
@@ -105,6 +105,27 @@
     color: var(--text-primary);
 }
 
+/* Troca de tema */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-left: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--text-primary);
+    border-color: var(--text-accent);
+    transform: rotate(15deg);
+}
+
 /* Troca de idioma */
 .lang-switch {
     display: inline-flex;
@@ -112,7 +133,7 @@
     justify-content: center;
     min-width: 44px;
     min-height: 44px;
-    margin-left: 1.5rem;
+    margin-left: 0.5rem;
     padding: 0 0.75rem;
     border: 1px solid var(--border-color);
     border-radius: 999px;
@@ -151,11 +172,11 @@
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(10, 10, 10, 0.95);
+    background: var(--menu-bg);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--tint-05);
     padding: 2rem 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px var(--shadow-color);
 }
 
 .mobile-nav-links {
@@ -197,9 +218,12 @@
         display: block;
     }
 
-    .lang-switch {
+    .theme-toggle {
         margin-left: auto;
-        margin-right: 0.75rem;
+    }
+
+    .lang-switch {
+        margin-right: 0.5rem;
     }
 
     .header {

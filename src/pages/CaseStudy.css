@@ -153,11 +153,11 @@
 }
 
 .arch-side .arch-node {
-    border-left-color: #3aa0dc;
+    border-left-color: var(--linkedin-text);
 }
 
 .arch-side .arch-tech {
-    color: #3aa0dc;
+    color: var(--linkedin-text);
 }
 
 /* Decisões */

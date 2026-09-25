@@ -21,4 +21,64 @@
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/cases/nexus/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/cases/nexus/" />
   </url>
+  <url>
+    <loc>https://devborges.vercel.app/projects/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/" />
+  </url>
+  <url>
+    <loc>https://devborges.vercel.app/en/projects/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/" />
+  </url>
+  <url>
+    <loc>https://devborges.vercel.app/projects/vitale/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/vitale/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/vitale/" />
+  </url>
+  <url>
+    <loc>https://devborges.vercel.app/en/projects/vitale/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/vitale/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/vitale/" />
+  </url>
+  <url>
+    <loc>https://devborges.vercel.app/projects/rcp/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/rcp/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/rcp/" />
+  </url>
+  <url>
+    <loc>https://devborges.vercel.app/en/projects/rcp/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/rcp/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/rcp/" />
+  </url>
+  <url>
+    <loc>https://devborges.vercel.app/projects/nathiara/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/nathiara/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/nathiara/" />
+  </url>
+  <url>
+    <loc>https://devborges.vercel.app/en/projects/nathiara/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/nathiara/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/nathiara/" />
+  </url>
+  <url>
+    <loc>https://devborges.vercel.app/projects/expense/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/expense/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/expense/" />
+  </url>
+  <url>
+    <loc>https://devborges.vercel.app/en/projects/expense/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/expense/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/expense/" />
+  </url>
+  <url>
+    <loc>https://devborges.vercel.app/projects/video/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/video/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/video/" />
+  </url>
+  <url>
+    <loc>https://devborges.vercel.app/en/projects/video/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/video/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/video/" />
+  </url>
 </urlset>

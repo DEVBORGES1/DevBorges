@@ -1,13 +1,17 @@
 import { useRef } from 'react';
 import { m, useScroll, useTransform } from 'framer-motion';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
+import { useTheme } from '../../theme/useTheme';
 
-// Cores sólidas (não opacidade) para o texto apagado manter contraste AA (4.6:1) sobre o fundo.
-const DIM = '#7a7a84';
-const LIT = '#ffffff';
+// Cores sólidas (não opacidade) para o texto apagado manter contraste AA (4.6:1) sobre o fundo de cada tema.
+// Ficam aqui, e não em variáveis CSS, porque o framer-motion precisa de cores concretas para interpolar.
+const colors = {
+    dark: { dim: '#7a7a84', lit: '#ffffff' },
+    light: { dim: '#71717a', lit: '#0a0a0a' },
+};
 
-const Word = ({ children, progress, range }) => {
-    const color = useTransform(progress, range, [DIM, LIT]);
+const Word = ({ children, progress, range, dim, lit }) => {
+    const color = useTransform(progress, range, [dim, lit]);
     return <m.span style={{ color }}>{children}</m.span>;
 };
 
@@ -33,13 +37,15 @@ const tokenize = (paragraphs) => {
 const ScrollLitText = ({ paragraphs }) => {
     const ref = useRef(null);
     const shouldReduceMotion = usePrefersReducedMotion();
+    const theme = useTheme();
+    const { dim, lit } = colors[theme];
     const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.5'] });
 
     if (shouldReduceMotion) {
         return (
             <div ref={ref}>
                 {paragraphs.map((segments, index) => (
-                    <p key={index} style={{ color: LIT }}>
+                    <p key={index} style={{ color: lit }}>
                         {segments.map((segment, i) =>
                             typeof segment === 'string' ? segment : <strong key={i}>{segment.strong}</strong>,
                         )}
@@ -56,7 +62,7 @@ const ScrollLitText = ({ paragraphs }) => {
             token.index === undefined ? (
                 token.text
             ) : (
-                <Word key={i} progress={scrollYProgress} range={[token.index / totalWords, (token.index + 1) / totalWords]}>
+                <Word key={i} progress={scrollYProgress} range={[token.index / totalWords, (token.index + 1) / totalWords]} dim={dim} lit={lit}>
                     {token.text}
                 </Word>
             ),
@@ -65,7 +71,8 @@ const ScrollLitText = ({ paragraphs }) => {
     return (
         <div ref={ref}>
             {tokenized.map((segments, index) => (
-                <p key={index}>
+                // Chave com o tema: ao trocar de tema as palavras remontam com as novas cores
+                <p key={`${theme}-${index}`}>
                     {segments.map(({ strong, tokens }, i) =>
                         strong ? <strong key={i}>{renderWords(tokens)}</strong> : <span key={i}>{renderWords(tokens)}</span>,
                     )}

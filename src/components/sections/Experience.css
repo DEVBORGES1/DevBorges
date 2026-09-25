@@ -37,10 +37,10 @@
 
 .timeline-content {
     width: calc(100% - 3rem);
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--tint-03);
     padding: 1.5rem;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--tint-05);
     position: relative;
     transition-property: var(--transition-props);
     transition-duration: 0.3s;
@@ -90,7 +90,7 @@
     z-index: 2;
     box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
     font-size: 1.2rem;
-    color: #fff;
+    color: var(--text-primary);
 }
 
 .timeline-date {
@@ -105,7 +105,7 @@
 
 .timeline-content h3 {
     font-size: 1.4rem;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
     font-weight: 700;
 }

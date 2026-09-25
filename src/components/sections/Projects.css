@@ -3,162 +3,18 @@
     padding: 5rem 2rem;
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-
 .reveal-item-wrapper {
     height: 100%;
 }
 
-.tilt-card-wrapper {
-    height: 100%;
-}
-
-.project-card {
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition-property: var(--transition-props);
-    transition-duration: 0.4s;
-    transition-timing-function: ease;
-    overflow: hidden;
-    /* For image */
+.projects-more {
     display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--text-accent);
-    box-shadow: 0 10px 40px -10px rgba(239, 68, 68, 0.2);
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.project-image-container {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    position: relative;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.project-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.project-card:hover .project-image {
-    transform: scale(1.1);
-}
-
-.project-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    background: rgba(5, 5, 5, 0.6);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.project-card:hover .project-overlay {
-    opacity: 1;
-}
-
-.project-link-overlay {
-    padding: 0.6rem 1.4rem;
-    border: 1px solid var(--text-accent);
-    border-radius: 50px;
-    background: rgba(239, 68, 68, 0.15);
-    color: #fff;
-    font-weight: 600;
-}
-
-.project-info {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.project-info h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.8rem;
-    color: var(--text-primary);
-    font-weight: 700;
-}
-
-.project-info p {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-.project-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.project-link {
-    padding: 0.6rem 1.2rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    color: var(--text-primary);
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition-property: var(--transition-props);
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
-}
-
-.project-private {
-    display: inline-flex;
-    align-items: center;
-    min-height: 40px;
-    padding: 0 1rem;
-    border: 1px dashed var(--border-color);
-    border-radius: 8px;
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-    font-weight: 500;
-}
-
-.project-link:hover {
-    background: var(--accent-strong);
-    color: #fff;
-    border-color: var(--text-accent);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
-}
-
-/* Em telas touch não há hover: o overlay só atrapalharia o primeiro toque */
-@media (hover: none) {
-    .project-overlay {
-        display: none;
-    }
+    margin-top: 3rem;
 }
 
 @media (max-width: 768px) {
     .projects {
         padding: 4rem 1rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
     }
 }

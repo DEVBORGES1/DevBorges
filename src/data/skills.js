@@ -23,7 +23,7 @@ export const skills = [
     { name: 'JavaScript', category: 'frontend', icon: FaJs, color: '#F7DF1E' },
     { name: 'React', category: 'frontend', icon: FaReact, color: '#61DAFB' },
     { name: 'React Native', category: 'frontend', icon: TbBrandReactNative, color: '#61DAFB' },
-    { name: 'Expo', category: 'frontend', icon: SiExpo, color: '#FFFFFF' },
+    { name: 'Expo', category: 'frontend', icon: SiExpo, color: 'var(--text-primary)' },
 
     { name: 'PostgreSQL', category: 'database', icon: SiPostgresql, color: '#4F8CC9' },
     { name: 'MySQL', category: 'database', icon: SiMysql, color: '#4479A1' },

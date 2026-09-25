@@ -4,7 +4,8 @@ import { useLocale } from '../../i18n/context';
 import './AvailabilityCta.css';
 
 // Bloco de chamada entre as seções: status de disponibilidade + convite para contato.
-const AvailabilityCta = () => {
+// Fora da home, `contactHref` aponta para o formulário na home do idioma.
+const AvailabilityCta = ({ contactHref = '#contact' }) => {
     const { t } = useLocale();
     const { status, heading, highlight, text, contact } = t.cta;
 
@@ -20,7 +21,7 @@ const AvailabilityCta = () => {
                 </h2>
                 <p className="availability-text">{text}</p>
                 <div className="availability-actions">
-                    <a href="#contact" className="cta-button">{contact}</a>
+                    <a href={contactHref} className="cta-button">{contact}</a>
                     <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="cta-button secondary">
                         <FaLinkedin aria-hidden="true" /> LinkedIn
                     </a>

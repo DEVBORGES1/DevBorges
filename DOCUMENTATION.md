@@ -10,10 +10,12 @@ A organização de pastas segue um padrão intuitivo para facilitar a manutenç�
 src/
   components/
     layout/     Header, Footer, Section (título + <section>), ScrollProgress
-    sections/   Hero, About, Experience, Projects, Skills, Contact
-    ui/         ProjectCard, TechTags, Tilt, ScrollReveal, StaggeredReveal
-  data/         profile, experience, projects, skills (todo o conteúdo do site)
-  hooks/        useTilt
+    sections/   Hero, About, Experience, Projects, AvailabilityCta, Skills, Contact
+    ui/         ProjectCard, ProjectCover, TechTags, Tilt, Marquee, ScrollLitText, ScrollReveal, StaggeredReveal
+  pages/        NexusCase, ProjectsPage, ProjectPage (+ uma pasta com main.jsx por entrada)
+  data/         profile, experience, projectContent, projects, skills (todo o conteúdo do site)
+  hooks/        useTilt, useActiveSection, usePrefersReducedMotion
+  theme/        useTheme (tema claro/escuro)
   styles/       variables.css (tokens), global.css (reset/base), shared.css
   assets/       imagens (WebP)
 ```
@@ -27,6 +29,7 @@ src/
 O design foi pensado para ser **clean** e **moderno**.
 
 *   **Variáveis CSS (`var(--...)`):** Uso variáveis para cores e fontes. Isso significa que se eu quiser mudar a cor principal do site de vermelho para azul, mudo em um lugar só e o site inteiro atualiza. Sem gambiarra.
+*   **Tema claro/escuro:** `variables.css` define os tokens do tema escuro (padrão) em `:root` e os do claro em `:root[data-theme='light']`. O botão do header chama `setTheme` (`src/theme/useTheme.js`), que troca o atributo no `<html>` e salva a escolha no `localStorage`. `public/theme-init.js` aplica o tema salvo antes da primeira pintura; é um arquivo externo porque a CSP bloqueia scripts inline. Use sempre os tokens (`var(--text-primary)`, `var(--tint-05)`...) em vez de cores fixas, para a cor funcionar nos dois temas.
 *   **Responsividade:** Tudo foi feito usando Flexbox e Grid. O site se adapta a celulares, tablets e desktops sem quebrar o layout. O menu de navegação, por exemplo, vira um hambúrguer em telas pequenas.
 
 ##  Animações
@@ -45,6 +48,10 @@ O site é multi-página (Vite `build.rollupOptions.input` em `vite.config.js`), 
 |---|---|---|
 | `/` e `/en/` | `index.html`, `en/index.html` | `src/App.jsx` |
 | `/cases/nexus/` e `/en/cases/nexus/` | `cases/nexus/index.html`, `en/cases/nexus/index.html` | `src/pages/NexusCase.jsx` (conteúdo em `src/data/cases/nexus.js`) |
+| `/projects/` e `/en/projects/` | `projects/index.html`, `en/projects/index.html` (gerados) | `src/pages/ProjectsPage.jsx` |
+| `/projects/<id>/` e `/en/projects/<id>/` | `projects/<id>/index.html`, `en/projects/<id>/index.html` (gerados) | `src/pages/ProjectPage.jsx` |
+
+A lista de todas as páginas fica em `scripts/pages.mjs`, lida pelo `vite.config.js` (entradas do build) e pelo `scripts/prerender.mjs`. Os HTML de `/projects/` e de cada projeto, e o `public/sitemap.xml`, são gerados por `npm run pages` a partir de `src/data/projectContent.js`. As páginas de projeto usam um só script (`src/pages/project/main.jsx`), que lê o projeto de `<html data-project>` e o idioma de `<html lang>`.
 
 Cada página tem o próprio HTML (título, descrição, canonical, `hreflang` e Open Graph) e usa o `AppShell` (idioma, header, rodapé e animações). Fora da home, os links do header apontam para a home do idioma (`/#secao` ou `/en/#secao`).
 
@@ -57,7 +64,7 @@ Cada página tem o próprio HTML (título, descrição, canonical, `hreflang` e 
 *   Os testes E2E verificam que as páginas em inglês não têm textos de interface em português.
 *   Currículos: `public/curriculo-joao-vitor-pereira.pdf` (PT) e `public/resume-joao-vitor-pereira.pdf` (EN). O inglês é gerado a partir de `resume/en.html` com `npm run resume`.
 
-Para criar uma página nova: crie o HTML, uma entrada em `src/pages/<nome>/main.jsx` chamando `mount(<Pagina />)`, adicione a entrada no `vite.config.js`, a página em `src/entry-server.jsx` e em `scripts/prerender.mjs`, e a URL em `public/sitemap.xml`.
+Para criar uma página nova (fora os projetos, que são gerados): crie o HTML, uma entrada em `src/pages/<nome>/main.jsx` chamando `mount(<Pagina />)`, adicione a página em `scripts/pages.mjs`, em `src/entry-server.jsx` e em `src/i18n/routes.js`, e rode `npm run pages` para atualizar o sitemap.
 
 ##  Build e performance
 
@@ -73,7 +80,7 @@ Para a hidratação funcionar, o HTML gerado no build e o do navegador precisam 
 
 Outras escolhas de performance:
 
-*   **Fontes locais** (`@fontsource-variable/inter` e `fira-code`): sem requisição bloqueante ao Google Fonts.
+*   **Fontes locais** (`@fontsource-variable/inter`, `fira-code` e `syne`): sem requisição bloqueante ao Google Fonts.
 *   **`LazyMotion`**: o núcleo de animação do framer-motion (`src/motionFeatures.js`) carrega depois da primeira renderização. Use sempre `m.div` (não `motion.div`); o modo `strict` acusa erro se esquecer.
 *   **Entradas do hero em CSS**: aparecem sem esperar o JavaScript.
 *   **Imagens WebP** no tamanho de exibição, com `srcset` no avatar e `loading="lazy"` nos projetos.
@@ -102,7 +109,8 @@ Todo o conteúdo fica em `src/data/`, separado dos componentes:
 
 *   `profile.js`: nome, cargo, resumo, currículo e links sociais (usados no Hero, Sobre, Contato e Rodapé).
 *   `experience.js`: itens da seção Experiência.
-*   `projects.js`: cards de projetos (imagem, descrição, tecnologias, repositório e demo opcional).
+*   `projectContent.js`: projetos sem imagens (ordem, categoria, ano, cor da capa, destaque na home, tecnologias, links e textos por idioma). Também é lido por scripts em Node.
+*   `projects.js`: junta o conteúdo com as imagens e a URL da página de cada projeto.
 *   `skills.js`: habilidades e categorias do filtro.
 
-Para adicionar um projeto, coloque a imagem (WebP, ~800px de largura) em `src/assets/projects/`, importe em `projects.js` e adicione um objeto na lista.
+Para adicionar um projeto: coloque a imagem (WebP, ~800px de largura) em `src/assets/projects/` e registre em `images` no `projects.js`; adicione o projeto em `projectItems` e os textos em `projectText` (`projectContent.js`); rode `npm run pages` para gerar as páginas e o sitemap. Use `featured: true` para mostrá-lo na home.
