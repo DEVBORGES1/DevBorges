@@ -23,7 +23,7 @@ export const projectItems = [
     {
         id: 'nathiara',
         category: 'frontend',
-        year: 2024,
+        year: 2026,
         color: '#f9a8d4',
         featured: true,
         tech: ['JavaScript', 'Node.js', 'HTML', 'CSS'],
@@ -33,7 +33,7 @@ export const projectItems = [
     {
         id: 'expense',
         category: 'desktop',
-        year: 2024,
+        year: 2025,
         color: '#bef264',
         tech: ['Python', 'Desktop', 'Data Viz'],
         repo: 'https://github.com/DEVBORGES1/Expense-Control',
