@@ -1,6 +1,12 @@
-import { FaBriefcase, FaMobileAlt, FaBalanceScale, FaGraduationCap } from 'react-icons/fa';
+import { FaBriefcase, FaMobileAlt, FaBalanceScale, FaGraduationCap, FaHamburger } from 'react-icons/fa';
 
 const items = [
+    {
+        id: 'sos',
+        icon: FaHamburger,
+        tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Zustand', 'Supabase', 'PostgreSQL', 'Node.js'],
+        link: 'https://so-s-delivery.vercel.app/',
+    },
     {
         id: 'nexusPleno',
         icon: FaBriefcase,
@@ -32,6 +38,17 @@ const items = [
 
 const text = {
     pt: {
+        sos: {
+            period: 'Freelance · Em andamento',
+            title: 'Desenvolvedor Full Stack',
+            org: 'S.O.S Delivery · Hamburgueria em Videira, SC',
+            highlights: [
+                'Site de pedidos da hamburgueria: cardápio, produto com adicionais e observação, carrinho e checkout que envia o pedido formatado pelo WhatsApp.',
+                'Painel da loja com pedidos em tempo real (Supabase Realtime) e etapas do pedido; cardápio, promoções, horários, taxa de entrega e abertura da loja editáveis sem mexer no código.',
+                'Agente de impressão em Node.js empacotado como .exe: ao aceitar o pedido, imprime a comanda em ESC/POS na impressora térmica da loja, sem impressões duplicadas.',
+                'Banco PostgreSQL no Supabase com Row Level Security e fallback para os dados locais quando o banco não responde.',
+            ],
+        },
         nexusPleno: {
             period: 'Jan/2026 – Jun/2026',
             title: 'Software Engineer Pleno',
@@ -84,6 +101,17 @@ const text = {
         },
     },
     en: {
+        sos: {
+            period: 'Freelance · In progress',
+            title: 'Full Stack Developer',
+            org: 'S.O.S Delivery · Burger restaurant in Videira, Brazil',
+            highlights: [
+                'Ordering website for the restaurant: menu, product page with add-ons and notes, cart and a checkout that sends the formatted order through WhatsApp.',
+                'Store dashboard with real-time orders (Supabase Realtime) and order stages; menu, promotions, opening hours, delivery fee and store status editable without touching the code.',
+                'Printing agent in Node.js packaged as an .exe: when an order is accepted, it prints the ticket in ESC/POS on the store’s thermal printer, with no duplicate prints.',
+                'PostgreSQL database on Supabase with Row Level Security, falling back to local data when the database does not respond.',
+            ],
+        },
         nexusPleno: {
             period: 'Jan 2026 – Jun 2026',
             title: 'Mid-level Software Engineer',
