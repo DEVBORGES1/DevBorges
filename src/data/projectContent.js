@@ -22,22 +22,22 @@ export const projectItems = [
         // Projeto para cliente: sem repositório público
     },
     {
-        id: 'rcp',
-        category: 'fullstack',
-        year: 2025,
-        color: '#fcd34d',
-        featured: true,
-        tech: ['PHP', 'Laravel', 'MySQL', 'JavaScript'],
-        repo: 'https://github.com/DEVBORGES1/RCP-Sistema-De-Concursos',
-    },
-    {
         id: 'nathiara',
         category: 'frontend',
         year: 2026,
         color: '#f9a8d4',
+        featured: true,
         tech: ['JavaScript', 'Node.js', 'HTML', 'CSS'],
         repo: 'https://github.com/DEVBORGES1/LINKTHREE',
         demo: 'https://nathiaraborgesadv.vercel.app/',
+    },
+    {
+        id: 'rcp',
+        category: 'fullstack',
+        year: 2025,
+        color: '#fcd34d',
+        tech: ['PHP', 'Laravel', 'MySQL', 'JavaScript'],
+        repo: 'https://github.com/DEVBORGES1/RCP-Sistema-De-Concursos',
     },
     {
         id: 'expense',

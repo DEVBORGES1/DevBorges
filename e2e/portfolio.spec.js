@@ -126,7 +126,7 @@ test.describe('projetos', () => {
         await expect(page.getByRole('link', { name: /Ver no GitHub/ })).toHaveAttribute('href', /RCP-Sistema-De-Concursos/);
 
         await page.getByRole('link', { name: /Projeto anterior/ }).click();
-        await expect(page).toHaveURL(/\/projects\/vitale\/$/);
+        await expect(page).toHaveURL(/\/projects\/nathiara\/$/);
         await expect(page.getByRole('link', { name: /Próximo projeto/ })).toHaveAttribute('href', '/projects/rcp/');
     });
 

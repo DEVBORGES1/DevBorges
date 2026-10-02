@@ -2,7 +2,7 @@ import sosImg from '../assets/projects/sos-delivery.webp';
 import vitaleImg from '../assets/projects/vitale.webp';
 import rcpImg from '../assets/projects/rcp.webp';
 import expenseImg from '../assets/projects/expense-control.webp';
-import linkthreeImg from '../assets/projects/linkthree.webp';
+import nathiaraImg from '../assets/projects/nathiara.webp';
 import videoImg from '../assets/projects/video-analyzer.webp';
 import { projectItems, projectText } from './projectContent';
 import { projectRoute } from '../i18n/routes';
@@ -11,7 +11,7 @@ const images = {
     sos: sosImg,
     vitale: vitaleImg,
     rcp: rcpImg,
-    nathiara: linkthreeImg,
+    nathiara: nathiaraImg,
     expense: expenseImg,
     video: videoImg,
 };
