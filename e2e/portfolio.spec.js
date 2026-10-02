@@ -107,7 +107,7 @@ test.describe('projetos', () => {
         await page.getByRole('link', { name: /Ver todos os projetos/ }).click();
         await expect(page).toHaveURL(/\/projects\/$/);
         await expect(page.getByRole('heading', { level: 1 })).toHaveText('Todos os projetos');
-        await expect(page.locator('.project-card')).toHaveCount(5);
+        await expect(page.locator('.project-card')).toHaveCount(6);
     });
 
     test('filtro da página de projetos mostra só a categoria escolhida', async ({ page }) => {

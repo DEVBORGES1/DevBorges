@@ -32,6 +32,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/" />
   </url>
   <url>
+    <loc>https://devborges.vercel.app/projects/sos/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/sos/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/sos/" />
+  </url>
+  <url>
+    <loc>https://devborges.vercel.app/en/projects/sos/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/sos/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/sos/" />
+  </url>
+  <url>
     <loc>https://devborges.vercel.app/projects/vitale/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://devborges.vercel.app/projects/vitale/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://devborges.vercel.app/en/projects/vitale/" />

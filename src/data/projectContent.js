@@ -3,6 +3,16 @@
 // A ordem da lista é a ordem de exibição; `featured` marca os que aparecem na home.
 export const projectItems = [
     {
+        id: 'sos',
+        category: 'fullstack',
+        year: 2026,
+        color: '#fca5a5',
+        featured: true,
+        tech: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Node.js'],
+        repo: 'https://github.com/DEVBORGES1/SoS_delivery',
+        demo: 'https://so-s-delivery.vercel.app/',
+    },
+    {
         id: 'vitale',
         category: 'mobile',
         year: 2026,
@@ -25,7 +35,6 @@ export const projectItems = [
         category: 'frontend',
         year: 2026,
         color: '#f9a8d4',
-        featured: true,
         tech: ['JavaScript', 'Node.js', 'HTML', 'CSS'],
         repo: 'https://github.com/DEVBORGES1/LINKTHREE',
         demo: 'https://nathiaraborgesadv.vercel.app/',
@@ -52,6 +61,12 @@ export const projectIds = projectItems.map((item) => item.id);
 
 export const projectText = {
     pt: {
+        sos: {
+            title: 'S.O.S Delivery — Pedidos da Hamburgueria',
+            role: 'Desenvolvedor Full Stack (freelance)',
+            description: 'Site de pedidos de uma hamburgueria de Videira (SC): o cliente monta o pedido no cardápio e finaliza pelo WhatsApp. Painel da loja com pedidos em tempo real, cardápio, promoções e horários editáveis, e um agente em Node.js que imprime a comanda na impressora térmica ao aceitar o pedido. Supabase com Row Level Security.',
+            imageAlt: 'Página inicial do S.O.S Delivery Videira com o lanche em destaque e o botão Pedir agora',
+        },
         vitale: {
             title: 'App Vitale — Gestão de Pilates',
             role: 'Desenvolvedor Full Stack (freelance)',
@@ -84,6 +99,12 @@ export const projectText = {
         },
     },
     en: {
+        sos: {
+            title: 'S.O.S Delivery — Burger Ordering Website',
+            role: 'Full Stack Developer (freelance)',
+            description: 'Ordering website for a burger restaurant in Videira, Brazil: customers build their order from the menu and check out through WhatsApp. Store dashboard with real-time orders, editable menu, promotions and opening hours, plus a Node.js agent that prints the ticket on the thermal printer when an order is accepted. Supabase with Row Level Security.',
+            imageAlt: 'S.O.S Delivery Videira home page with the featured burger and the Order now button',
+        },
         vitale: {
             title: 'Vitale App — Pilates Studio Management',
             role: 'Full Stack Developer (freelance)',

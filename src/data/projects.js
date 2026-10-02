@@ -1,3 +1,4 @@
+import sosImg from '../assets/projects/sos-delivery.webp';
 import vitaleImg from '../assets/projects/vitale.webp';
 import rcpImg from '../assets/projects/rcp.webp';
 import expenseImg from '../assets/projects/expense-control.webp';
@@ -7,6 +8,7 @@ import { projectItems, projectText } from './projectContent';
 import { projectRoute } from '../i18n/routes';
 
 const images = {
+    sos: sosImg,
     vitale: vitaleImg,
     rcp: rcpImg,
     nathiara: linkthreeImg,
