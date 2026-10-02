@@ -2,9 +2,14 @@ import { FaBriefcase, FaMobileAlt, FaBalanceScale, FaGraduationCap } from 'react
 
 const items = [
     {
+        id: 'nexusPleno',
+        icon: FaBriefcase,
+        tech: ['Nginx', 'Let’s Encrypt', 'Linux', 'GitHub Actions', 'Code review'],
+    },
+    {
         id: 'nexus',
         icon: FaBriefcase,
-        tech: ['TypeScript', 'React Native', 'Expo', 'PostgreSQL', 'MySQL', 'SQL Server', 'Nginx', 'GitHub Actions'],
+        tech: ['TypeScript', 'React Native', 'Expo', 'JWT', 'Google OAuth', 'PostgreSQL', 'MySQL', 'SQL Server'],
         caseStudy: 'nexus',
     },
     {
@@ -27,16 +32,26 @@ const items = [
 
 const text = {
     pt: {
+        nexusPleno: {
+            period: 'Jan/2026 – Jun/2026',
+            title: 'Software Engineer Pleno',
+            org: 'Nexus Labz · Híbrido',
+            highlights: [
+                'Configurei o Nginx como proxy reverso, SSL/TLS com Let’s Encrypt e reforço de segurança no nível do servidor.',
+                'Implementei pipelines de CI/CD com GitHub Actions para o deploy automatizado do backend.',
+                'Orientei um desenvolvedor júnior e conduzi revisões técnicas.',
+            ],
+        },
         nexus: {
-            period: 'Nov/2025 – Jun/2026',
+            period: 'Jan/2025 – Jan/2026',
             title: 'Software Engineer Jr',
             org: 'Nexus Labz · Remoto',
             highlights: [
-                'Arquitetei e entreguei um app mobile em React Native (Expo) que chegou à produção, com pagamentos, cache offline e login com Google (OAuth).',
-                'Defini a arquitetura das camadas mobile e backend, com autenticação JWT e comunicação segura com a API.',
-                'Montei a infraestrutura de produção em VPS: Nginx como proxy reverso, SSL/TLS com Let’s Encrypt e hardening do servidor.',
-                'Automatizei o deploy do backend com pipelines de CI/CD no GitHub Actions.',
-                'Mentorei um desenvolvedor júnior e conduzi code reviews.',
+                'Arquitetei e entreguei um app mobile em React Native (Expo) de nível de produção.',
+                'Defini a arquitetura do sistema em camadas, no mobile e no backend.',
+                'Integrei processamento de pagamentos, cache offline e login com Google (OAuth).',
+                'Projetei o fluxo de autenticação baseado em JWT, com comunicação segura com a API.',
+                'Liderei as decisões de infraestrutura e implementei o ambiente de produção em VPS.',
             ],
         },
         vitale: {
@@ -69,16 +84,26 @@ const text = {
         },
     },
     en: {
+        nexusPleno: {
+            period: 'Jan 2026 – Jun 2026',
+            title: 'Mid-level Software Engineer',
+            org: 'Nexus Labz · Hybrid',
+            highlights: [
+                'Configured Nginx as a reverse proxy, SSL/TLS with Let’s Encrypt and server-level security hardening.',
+                'Implemented CI/CD pipelines with GitHub Actions for automated backend deployments.',
+                'Mentored a junior developer and led technical reviews.',
+            ],
+        },
         nexus: {
-            period: 'Nov 2025 – Jun 2026',
+            period: 'Jan 2025 – Jan 2026',
             title: 'Junior Software Engineer',
             org: 'Nexus Labz · Remote',
             highlights: [
-                'Architected and shipped a React Native (Expo) mobile app to production, with payments, offline caching and Google sign-in (OAuth).',
-                'Defined the architecture of the mobile and backend layers, with JWT authentication and secure API communication.',
-                'Set up the production infrastructure on a VPS: Nginx reverse proxy, SSL/TLS with Let’s Encrypt and server hardening.',
-                'Automated backend deployments with CI/CD pipelines on GitHub Actions.',
-                'Mentored a junior developer and led code reviews.',
+                'Architected and shipped a production-grade React Native (Expo) mobile app.',
+                'Defined a layered system architecture across the mobile and backend layers.',
+                'Integrated payment processing, offline caching and Google sign-in (OAuth).',
+                'Designed a JWT-based authentication flow with secure API communication.',
+                'Led infrastructure decisions and set up a VPS-based production environment.',
             ],
         },
         vitale: {
