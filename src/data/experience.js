@@ -43,7 +43,7 @@ const text = {
             ],
         },
         nexus: {
-            period: 'Jan/2025 – Atual',
+            period: 'Jan/2025 – Jan/2026',
             title: 'Software Engineer Jr',
             org: 'Nexus Labz · Remoto',
             highlights: [
@@ -95,7 +95,7 @@ const text = {
             ],
         },
         nexus: {
-            period: 'Jan 2025 – Present',
+            period: 'Jan 2025 – Jan 2026',
             title: 'Junior Software Engineer',
             org: 'Nexus Labz · Remote',
             highlights: [

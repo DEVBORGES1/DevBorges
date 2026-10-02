@@ -6,7 +6,7 @@ export const about = {
             ['Também desenvolvo sistemas completos para clientes e projetos próprios, com ', { strong: 'TypeScript, Node.js, PHP/Laravel, Python e C#/.NET' }, ' e bancos como PostgreSQL, MySQL e SQL Server. Atuo de ponta a ponta: da modelagem de dados e das regras de negócio às interfaces, integrações e infraestrutura.'],
         ],
         stats: [
-            { number: '1 ano e 10 meses', label: 'como Software Engineer na Nexus Labz' },
+            { number: '1 ano e 6 meses', label: 'como Software Engineer na Nexus Labz' },
             { number: '2 apps', label: 'mobile em React Native entregues do início ao fim' },
             { number: 'Dez/2027', label: 'conclusão em Ciência da Computação (Unoesc)' },
         ],
@@ -17,7 +17,7 @@ export const about = {
             ['I also build complete systems for clients and personal projects with ', { strong: 'TypeScript, Node.js, PHP/Laravel, Python and C#/.NET' }, ', and databases such as PostgreSQL, MySQL and SQL Server. I work end to end: from data modeling and business rules to interfaces, integrations and infrastructure.'],
         ],
         stats: [
-            { number: '1 yr 10 mos', label: 'as a Software Engineer at Nexus Labz' },
+            { number: '1 yr 6 mos', label: 'as a Software Engineer at Nexus Labz' },
             { number: '2 apps', label: 'React Native mobile apps delivered end to end' },
             { number: 'Dec/2027', label: 'expected B.Sc. in Computer Science (Unoesc)' },
         ],
