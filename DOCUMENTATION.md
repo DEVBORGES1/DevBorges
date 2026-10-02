@@ -62,7 +62,7 @@ Cada página tem o próprio HTML (título, descrição, canonical, `hreflang` e 
 *   `src/data/`: o conteúdo guarda imagens, links e tecnologias uma vez só e os textos por idioma (`getExperience(locale)`, `getProjects(locale)`, `about[locale]`, `getNexusCase(locale)`).
 *   Componentes leem o idioma com `useLocale()` (`{ locale, t }`).
 *   Os testes E2E verificam que as páginas em inglês não têm textos de interface em português.
-*   Currículos: `public/curriculo-joao-vitor-pereira.pdf` (PT) e `public/resume-joao-vitor-pereira.pdf` (EN). O inglês é gerado a partir de `resume/en.html` com `npm run resume`.
+*   Currículos: `public/curriculo-joao-vitor-pereira.pdf` (PT) e `public/resume-joao-vitor-pereira.pdf` (EN), gerados a partir de `resume/pt.html` e `resume/en.html` com `npm run resume`.
 
 Para criar uma página nova (fora os projetos, que são gerados): crie o HTML, uma entrada em `src/pages/<nome>/main.jsx` chamando `mount(<Pagina />)`, adicione a página em `scripts/pages.mjs`, em `src/entry-server.jsx` e em `src/i18n/routes.js`, e rode `npm run pages` para atualizar o sitemap.
 
