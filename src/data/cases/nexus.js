@@ -4,9 +4,9 @@ const pt = {
     title: 'Do zero à produção: app mobile, backend e infraestrutura',
     lead: 'Como Software Engineer na Nexus Labz, fui responsável pela arquitetura de um app mobile em React Native e do backend que o sustenta — autenticação, pagamentos, servidor e pipeline de deploy.',
     facts: [
-        { label: 'Cargo', value: 'Software Engineer Jr' },
-        { label: 'Período', value: 'Nov/2025 – Jun/2026 · 8 meses' },
-        { label: 'Formato', value: 'Remoto · Startup' },
+        { label: 'Cargo', value: 'Software Engineer Jr e Pleno' },
+        { label: 'Período', value: 'Jan/2025 – atual · 1 ano e 10 meses' },
+        { label: 'Formato', value: 'Remoto e híbrido · Startup' },
         { label: 'Escopo', value: 'Mobile, backend, infraestrutura e CI/CD' },
     ],
     challenge: [
@@ -88,9 +88,9 @@ const en = {
     title: 'From zero to production: mobile app, backend and infrastructure',
     lead: 'As a Software Engineer at Nexus Labz, I was responsible for the architecture of a React Native mobile app and the backend behind it — authentication, payments, servers and the deployment pipeline.',
     facts: [
-        { label: 'Role', value: 'Junior Software Engineer' },
-        { label: 'Period', value: 'Nov 2025 – Jun 2026 · 8 months' },
-        { label: 'Setup', value: 'Remote · Startup' },
+        { label: 'Role', value: 'Junior and Mid-level Software Engineer' },
+        { label: 'Period', value: 'Jan 2025 – present · 1 yr 10 mos' },
+        { label: 'Setup', value: 'Remote and hybrid · Startup' },
         { label: 'Scope', value: 'Mobile, backend, infrastructure and CI/CD' },
     ],
     challenge: [
